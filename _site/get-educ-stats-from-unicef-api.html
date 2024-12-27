@@ -137,8 +137,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#finding-an-educational-dataflow" id="toc-finding-an-educational-dataflow" class="nav-link active" data-scroll-target="#finding-an-educational-dataflow">Finding an educational dataflow</a></li>
+  <li><a href="#finding-the-right-indicator" id="toc-finding-the-right-indicator" class="nav-link" data-scroll-target="#finding-the-right-indicator">Finding the right indicator</a></li>
+  <li><a href="#limiting-to-countries-in-africa" id="toc-limiting-to-countries-in-africa" class="nav-link" data-scroll-target="#limiting-to-countries-in-africa">Limiting to countries in Africa</a></li>
+  <li><a href="#pulling-down-the-data" id="toc-pulling-down-the-data" class="nav-link" data-scroll-target="#pulling-down-the-data">Pulling down the data</a></li>
+  <li><a href="#visualizing-the-data" id="toc-visualizing-the-data" class="nav-link" data-scroll-target="#visualizing-the-data">Visualizing the data</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -192,18 +202,24 @@ $ dsdRef              &lt;chr&gt; "DSD_BRAZIL_CO", "DSD_BRAZIL_CO_SELO", "CAP203
 $ Description.en      &lt;chr&gt; NA, NA, NA, "This dataset is used to support the d…</code></pre>
 </div>
 </div>
-<p>Now let’s filter down to dataflows that mention education in their “Name.en” field:</p>
+<section id="finding-an-educational-dataflow" class="level1">
+<h1>Finding an educational dataflow</h1>
+<p>Now let’s filter down to dataflows that mention education in their “Name.en” or “id” field:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>all_unicef_dataflows <span class="sc">|&gt;</span> </span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    stringr<span class="sc">::</span><span class="fu">str_detect</span>(Name.en, stringr<span class="sc">::</span><span class="fu">fixed</span>(<span class="st">"education"</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(id, agencyID, Name.en, dsdRef)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    stringr<span class="sc">::</span><span class="fu">str_detect</span>(Name.en, stringr<span class="sc">::</span><span class="fu">fixed</span>(<span class="st">"education"</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>)) <span class="sc">|</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>      stringr<span class="sc">::</span><span class="fu">str_detect</span>(id, stringr<span class="sc">::</span><span class="fu">fixed</span>(<span class="st">"education"</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(id, agencyID, Name.en, dsdRef)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 4
-  id    agencyID Name.en          dsdRef    
-  &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;            &lt;chr&gt;     
-1 EDU   MENARO   MENARO Education MENARO_EDU</code></pre>
+<pre><code># A tibble: 4 × 4
+  id                agencyID Name.en                                      dsdRef
+  &lt;chr&gt;             &lt;chr&gt;    &lt;chr&gt;                                        &lt;chr&gt; 
+1 EDU               MENARO   MENARO Education                             MENAR…
+2 EDUCATION         UNICEF   EDU - Access and Completion (HH Survey Data) EDUCA…
+3 EDUCATION_FLS     UNICEF   EDU - Learning and Skills                    EDUCA…
+4 EDUCATION_UIS_SDG UNICEF   EDU - SDG Indicators (UIS Database)          EDUCA…</code></pre>
 </div>
 </div>
 <p>Let’s say we want to explore the UNICEF dataflow with id equal to “EDUCATION”. We can see from the table above that that dataflow uses the data structure definition (DSD) “EDUCATION”. We can get more information on that DSD with:</p>
@@ -243,6 +259,9 @@ $ Description.en      &lt;chr&gt; NA, NA, NA, "This dataset is used to support t
 7     7 UNIT_MEASURE     CL_UNIT_MEASURE    </code></pre>
 </div>
 </div>
+</section>
+<section id="finding-the-right-indicator" class="level1">
+<h1>Finding the right indicator</h1>
 <p>Let’s look more closely at the UNICIEF_INDICATOR dimension, which uses the codelist with name “CL_UNICEF_INDICATOR”:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>unicef_education_dsd_indicators_codelist <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">keep</span>(</span>
@@ -314,6 +333,9 @@ $ Description.en      &lt;chr&gt; NA, NA, NA, "This dataset is used to support t
 <pre><code>[1] "ED_CR_L3"</code></pre>
 </div>
 </div>
+</section>
+<section id="limiting-to-countries-in-africa" class="level1">
+<h1>Limiting to countries in Africa</h1>
 <p>In this case, we want to limit to countries from Africa, so let’s look at the codelist “CL_COUNTRY”:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>cl_country_codelist <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">keep</span>(</span>
@@ -534,6 +556,9 @@ Caused by warning:
 # ℹ 47 more rows</code></pre>
 </div>
 </div>
+</section>
+<section id="pulling-down-the-data" class="level1">
+<h1>Pulling down the data</h1>
 <p>We could filter our request on additional dimensions, but for the sake of simplicity let’s filter only to our target indicator and countries. Here’s how to make that request:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>african_education_data <span class="ot">&lt;-</span> rsdmx<span class="sc">::</span><span class="fu">readSDMX</span>(</span>
@@ -566,6 +591,9 @@ Caused by warning:
 <span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span> </span>
 <span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">list_rbind</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="visualizing-the-data" class="level1">
+<h1>Visualizing the data</h1>
 <p>Now let’s filter to only totals by sex, wealth quintile, and residence, and select and rename only the columns we want:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>african_education_data_cleaned <span class="ot">&lt;-</span> african_education_data_as_tibble <span class="sc">|&gt;</span> </span>
@@ -614,6 +642,7 @@ Caused by warning:
 </div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

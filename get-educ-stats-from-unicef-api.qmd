@@ -1,8 +1,5 @@
 ---
 title: "Retrieving education statistics from UNICEF with the rsdmx package"
-format: html
-editor: visual
-output-dir: docs
 ---
 
 Let's say we want to download upper secondary completion rates for all available African countries from the UNICEF data API. The first step is finding a dataflow related to education. Using the rsdmx package, we can get a table of all dataflows available from the UNICEF API:
@@ -19,12 +16,15 @@ all_unicef_dataflows <- rsdmx::readSDMX(
 dplyr::glimpse(all_unicef_dataflows)
 ```
 
-Now let's filter down to dataflows that mention education in their "Name.en" field:
+# Finding an educational dataflow
+
+Now let's filter down to dataflows that mention education in their "Name.en" or "id" field:
 
 ```{r}
 all_unicef_dataflows |> 
   dplyr::filter(
-    stringr::str_detect(Name.en, stringr::fixed("education", ignore_case = TRUE))
+    stringr::str_detect(Name.en, stringr::fixed("education", ignore_case = TRUE)) |
+      stringr::str_detect(id, stringr::fixed("education", ignore_case = TRUE))
   ) |> 
   dplyr::select(id, agencyID, Name.en, dsdRef)
 ```
@@ -55,6 +55,8 @@ dimensions_and_codelists_in_order <- purrr::map2(
 ```{r}
 dimensions_and_codelists_in_order
 ```
+
+# Finding the right indicator
 
 Let's look more closely at the UNICIEF_INDICATOR dimension, which uses the codelist with name "CL_UNICEF_INDICATOR":
 
@@ -100,6 +102,8 @@ In order to request data for that indicator, we will need to know its ID value:
 ```{r}
 upper_secondary_completion_indicator@id
 ```
+
+# Limiting to countries in Africa
 
 In this case, we want to limit to countries from Africa, so let's look at the codelist "CL_COUNTRY":
 
@@ -149,6 +153,8 @@ african_country_codes <- country_codes_and_labels |>
 african_country_codes
 ```
 
+# Pulling down the data
+
 We could filter our request on additional dimensions, but for the sake of simplicity let's filter only to our target indicator and countries. Here's how to make that request:
 
 ```{r}
@@ -183,6 +189,8 @@ african_education_data_as_tibble <- purrr::map(
 ) |> 
   purrr::list_rbind()
 ```
+
+# Visualizing the data
 
 Now let's filter to only totals by sex, wealth quintile, and residence, and select and rename only the columns we want:
 
