@@ -1,0 +1,3486 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Harmonizing SDMX education codelists – Linking the IUSSP FAIR Vocabulary to SDMX</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Linking the IUSSP FAIR Vocabulary to SDMX</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#finding-an-education-codelist-from-abs" id="toc-finding-an-education-codelist-from-abs" class="nav-link active" data-scroll-target="#finding-an-education-codelist-from-abs">Finding an education codelist from ABS</a></li>
+  <li><a href="#finding-an-education-codelist-from-pdh" id="toc-finding-an-education-codelist-from-pdh" class="nav-link" data-scroll-target="#finding-an-education-codelist-from-pdh">Finding an education codelist from PDH</a></li>
+  <li><a href="#harmonizing-disparate-education-codelists" id="toc-harmonizing-disparate-education-codelists" class="nav-link" data-scroll-target="#harmonizing-disparate-education-codelists">Harmonizing disparate education codelists</a></li>
+  <li><a href="#leveraging-harmonized-codelists" id="toc-leveraging-harmonized-codelists" class="nav-link" data-scroll-target="#leveraging-harmonized-codelists">Leveraging harmonized codelists</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Harmonizing SDMX education codelists</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Let’s try to find two dataflows with disaggregations by education from two different data providers. What data providers are available?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>all_data_providers <span class="ot">&lt;-</span> rsdmx<span class="sc">::</span><span class="fu">getSDMXServiceProviders</span>()</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">map</span>(</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  all_data_providers<span class="sc">@</span>providers,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>dplyr<span class="sc">::</span><span class="fu">tibble</span>(<span class="at">id =</span> .x<span class="sc">@</span>agencyId, <span class="at">name =</span> .x<span class="sc">@</span>name)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span> </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">list_rbind</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">30</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 28 × 2
+   id         name                                                              
+   &lt;chr&gt;      &lt;chr&gt;                                                             
+ 1 BIS        "Bank for International Settlements"                              
+ 2 ECB        "European Central Bank"                                           
+ 3 ESTAT      "Eurostat (Statistical office of the European Union)"             
+ 4 ESTAT      "Eurostat (Statistical office of the European Union) - COMEXT"    
+ 5 ESTAT      "Eurostat (Statistical office of the European Union) - DG COMP"   
+ 6 ESTAT      "Eurostat (Statistical office of the European Union) - DG GROW"   
+ 7 ESTAT      "Eurostat (Statistical office of the European Union) - DG EMPL"   
+ 8 IMF        "International Monetary Fund"                                     
+ 9 OECD       "Organisation for Economic Cooperation and Development "          
+10 UNICEF     "United Nations International Children's Emergency Fund"          
+11 CD2030     "United Nations International Children's Emergency Fund"          
+12 UNSD       "United Nations Statistics Division"                              
+13 ILO_Legacy "International Labour Organization of the United Nations"         
+14 ILO        "International Labour Organization of the United Nations"         
+15 WBG_WITS   "World Integrated Trade Solution"                                 
+16 WB         "World Bank"                                                      
+17 PDH        "Pacific Data Hub DotStat"                                        
+18 ABS        "Australian Bureau of Statistics"                                 
+19 NBB        "National Bank of Belgium"                                        
+20 INSEE      "Institut national de la statistique et des études économiques"   
+21 INEGI      "Instituto Nacional de Estadística y Geografía (Méjico)"          
+22 ISTAT      "Istituto nazionale di statistica (Italia)"                       
+23 NOMIS      "NOMIS - UK Official Labour Market Statistics"                    
+24 LSD        "Statistics Lithuania"                                            
+25 NCSI       "Sultanate of Oman - National Center for Statistics &amp; Information"
+26 STAT_EE    "Statistics Estonia database"                                     
+27 BBK        "Bundesbank"                                                      
+28 KNOEMA     "KNOEMA knowledge plateform"                                      </code></pre>
+</div>
+</div>
+<section id="finding-an-education-codelist-from-abs" class="level1">
+<h1>Finding an education codelist from ABS</h1>
+<p>Now let’s find a dataflow with disaggregations by education from the Australian Bureau of Statistics:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>all_abs_dataflows <span class="ot">&lt;-</span> rsdmx<span class="sc">::</span><span class="fu">readSDMX</span>(</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">providerId =</span> <span class="st">"ABS"</span>,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">resource =</span> <span class="st">"dataflow"</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[rsdmx][INFO] Fetching 'https://api.data.abs.gov.au/dataflow/all/all/latest/' </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>all_abs_dataflows_table <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">as_tibble</span>(all_abs_dataflows)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>After some interactive searching, I discovered that the ABS reports educational attainment separately for highest year of primary or secondary school (up to year 12) completed and for highest “non-school qualification”, where non-school qualifications are levels of education other than pre-primary, primary, and secondary. For highest year of (primary or secondary) school completed, we can use “Census 2021, G16 Highest year of school completed by age by sex, Commonwealth Electoral Divisions (CED 2021 boundaries)” dataflow, which uses the “C21_G16_CED” data structure definition (DSD), and for highest non-school qualification, we can use “Census 2021, G49 Highest non-school qualification: level of education by age by sex, Commonwealth Electoral Divisions (CED 2021 boundaries)” dataflow, which uses the “C21_G49_CED” DSD.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>abs_highest_yr_of_school_DSD <span class="ot">&lt;-</span> rsdmx<span class="sc">::</span><span class="fu">readSDMX</span>(</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">providerId =</span> <span class="st">"ABS"</span>,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">resource =</span> <span class="st">"datastructure"</span>,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">resourceId =</span> <span class="st">"C21_G16_CED"</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[rsdmx][INFO] Fetching 'https://api.data.abs.gov.au/datastructure/all/C21_G16_CED/latest/?references=children' </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>abs_highest_non_school_qual_DSD <span class="ot">&lt;-</span> rsdmx<span class="sc">::</span><span class="fu">readSDMX</span>(</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">providerId =</span> <span class="st">"ABS"</span>,</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">resource =</span> <span class="st">"datastructure"</span>,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">resourceId =</span> <span class="st">"C21_G49_CED"</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[rsdmx][INFO] Fetching 'https://api.data.abs.gov.au/datastructure/all/C21_G49_CED/latest/?references=children' </code></pre>
+</div>
+</div>
+<p>Now let’s look at the codelists used in those DSDs, starting with highest year of school:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>abs_highest_yr_of_school_DSD_codelists <span class="ot">&lt;-</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  abs_highest_yr_of_school_DSD<span class="sc">@</span>codelists<span class="sc">@</span>codelists</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">map</span>(</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  abs_highest_yr_of_school_DSD_codelists,</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>dplyr<span class="sc">::</span><span class="fu">tibble</span>(<span class="at">id =</span> .x<span class="sc">@</span>id, <span class="at">name =</span> .x<span class="sc">@</span>Name<span class="sc">$</span>en)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span> </span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">list_rbind</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 2
+  id             name                                   
+  &lt;chr&gt;          &lt;chr&gt;                                  
+1 CL_C21_AGEP04  Age 04                                 
+2 CL_C21_HSCP02  Highest Year of School Completed 02    
+3 CL_C21_SEXP01  Sex 01                                 
+4 CL_CED_2021    Commonwealth Electoral Divisions - 2021
+5 CL_REGION_TYPE Region Type                            
+6 CL_STATE       State                                  </code></pre>
+</div>
+</div>
+<p>This DSD uses the “CL_C21_HSCP02” codelist. Let’s see the codes and labels for that codelist:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>CL_C21_HSCP02_codelist <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">keep</span>(</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  abs_highest_yr_of_school_DSD_codelists,</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>.x<span class="sc">@</span>id <span class="sc">==</span> <span class="st">"CL_C21_HSCP02"</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>)[[<span class="dv">1</span>]]</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">map</span>(</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  CL_C21_HSCP02_codelist<span class="sc">@</span>Code,</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>dplyr<span class="sc">::</span><span class="fu">tibble</span>(<span class="at">id =</span> .x<span class="sc">@</span>id, <span class="at">label =</span> .x<span class="sc">@</span>label<span class="sc">$</span>en)</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span> </span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">list_rbind</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 8 × 2
+  id    label                            
+  &lt;chr&gt; &lt;chr&gt;                            
+1 _T    Total                            
+2 1     Year 12 or equivalent            
+3 2     Year 11 or equivalent            
+4 3     Year 10 or equivalent            
+5 4     Year 9 or equivalent             
+6 5     Year 8 or below                  
+7 6     Did not go to school             
+8 _N    Highest year of school not stated</code></pre>
+</div>
+</div>
+<p>Now for non-school qualification:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>abs_highest_non_school_qual_DSD_codelists <span class="ot">&lt;-</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  abs_highest_non_school_qual_DSD<span class="sc">@</span>codelists<span class="sc">@</span>codelists</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">map</span>(</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  abs_highest_non_school_qual_DSD_codelists,</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>dplyr<span class="sc">::</span><span class="fu">tibble</span>(<span class="at">id =</span> .x<span class="sc">@</span>id, <span class="at">name =</span> .x<span class="sc">@</span>Name<span class="sc">$</span>en)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span> </span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">list_rbind</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 2
+  id             name                                           
+  &lt;chr&gt;          &lt;chr&gt;                                          
+1 CL_C21_AGEP08  Age 08                                         
+2 CL_C21_QALLP02 Non-school qualification: Level of education 02
+3 CL_C21_SEXP01  Sex 01                                         
+4 CL_CED_2021    Commonwealth Electoral Divisions - 2021        
+5 CL_REGION_TYPE Region Type                                    
+6 CL_STATE       State                                          </code></pre>
+</div>
+</div>
+<p>This DSD uses the “CL_C21_QALLP02” codelist. Let’s see the codes and labels for that codelist:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>CL_C21_QALLP02_codelist <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">keep</span>(</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  abs_highest_non_school_qual_DSD_codelists,</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>.x<span class="sc">@</span>id <span class="sc">==</span> <span class="st">"CL_C21_QALLP02"</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>)[[<span class="dv">1</span>]]</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">map</span>(</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  CL_C21_QALLP02_codelist<span class="sc">@</span>Code,</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>dplyr<span class="sc">::</span><span class="fu">tibble</span>(<span class="at">id =</span> .x<span class="sc">@</span>id, <span class="at">label =</span> .x<span class="sc">@</span>label<span class="sc">$</span>en)</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span> </span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">list_rbind</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 11 × 2
+   id    label                                          
+   &lt;chr&gt; &lt;chr&gt;                                          
+ 1 _T    Total                                          
+ 2 1     Postgraduate Degree Level                      
+ 3 2     Graduate Diploma and Graduate Certificate Level
+ 4 3     Bachelor Degree Level                          
+ 5 4     Advanced Diploma and Diploma Level             
+ 6 5     Certificate Level Total                        
+ 7 51    Certificate III and IV Level                   
+ 8 52    Certificate I and II Level                     
+ 9 50    Certificate Level, nfd                         
+10 0     Level of education inadequately described      
+11 _N    Level of education not stated                  </code></pre>
+</div>
+</div>
+</section>
+<section id="finding-an-education-codelist-from-pdh" class="level1">
+<h1>Finding an education codelist from PDH</h1>
+<p>Now let’s find a dataflow with disaggregations by education from the Pacific Data Hub:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>all_pdh_dataflows <span class="ot">&lt;-</span> rsdmx<span class="sc">::</span><span class="fu">readSDMX</span>(</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">providerId =</span> <span class="st">"PDH"</span>,</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">resource =</span> <span class="st">"dataflow"</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[rsdmx][INFO] Fetching 'https://stats-nsi-stable.pacificdata.org/rest/dataflow/all/all/latest/' </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>all_pdh_dataflows_table <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">as_tibble</span>(all_pdh_dataflows)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s see which dataflows mention education:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>all_pdh_dataflows_table <span class="sc">|&gt;</span> </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(stringr<span class="sc">::</span><span class="fu">str_detect</span>(Name.en, <span class="st">"[Ee]ducation"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(id, Name.en, dsdRef)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 3
+  id           Name.en                                                    dsdRef
+  &lt;chr&gt;        &lt;chr&gt;                                                      &lt;chr&gt; 
+1 DF_EDUCATION Education Attainment by country age, sex, urbanisation, a… DSD_E…
+2 DF_EMPLOYED  Employed population by education, occupation and economic… DSD_E…
+3 DF_NEET      NEET - Youth not in education, employment or training (15… DSD_N…
+4 DF_NMDI_EDU  National Minimum Development Indicators (NMDI) for Educat… DSD_N…
+5 DF_SDG_04    Sustainable Development Goal 04 - Quality Education        DSD_S…
+6 DF_UIS       Thematic (SDG goal 4) indicators on Education              DSD_U…</code></pre>
+</div>
+</div>
+<p>The dataflow “Education Attainment by country age, sex, urbanisation, and disability status”, which uses the “DSD_EDUCATION” DSD, looks like a good candidate. Let’s pull down information on that DSD:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>pdh_educ_DSD <span class="ot">&lt;-</span> rsdmx<span class="sc">::</span><span class="fu">readSDMX</span>(</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">providerId =</span> <span class="st">"PDH"</span>,</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">resource =</span> <span class="st">"datastructure"</span>,</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">resourceId =</span> <span class="st">"DSD_EDUCATION"</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[rsdmx][INFO] Fetching 'https://stats-nsi-stable.pacificdata.org/rest/datastructure/all/DSD_EDUCATION/latest/?references=children' </code></pre>
+</div>
+</div>
+<p>What codelists are used by that DSD?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>pdh_educ_DSD_codelists <span class="ot">&lt;-</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  pdh_educ_DSD<span class="sc">@</span>codelists<span class="sc">@</span>codelists</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">map</span>(</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  pdh_educ_DSD_codelists,</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>dplyr<span class="sc">::</span><span class="fu">tibble</span>(<span class="at">id =</span> .x<span class="sc">@</span>id, <span class="at">name =</span> .x<span class="sc">@</span>Name<span class="sc">$</span>en)</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span> </span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">list_rbind</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 12 × 2
+   id                      name                                                 
+   &lt;chr&gt;                   &lt;chr&gt;                                                
+ 1 CL_COM_AGE              Common codelist for age                              
+ 2 CL_COM_CONF_STATUS      Common codelist for confidentiality                  
+ 3 CL_COM_DISABILITY       Common codelist for disability                       
+ 4 CL_COM_FREQ             Common codelist for data frequencies                 
+ 5 CL_COM_GEO_PICT         Common hierarchical codelist for PICTs               
+ 6 CL_COM_ISCED11          Common codelist for the International Standard Class…
+ 7 CL_COM_OBS_STATUS       Common codelist for observation statuses             
+ 8 CL_COM_SEX              Common codelist for sex                              
+ 9 CL_COM_UNIT_MEASURE     Common codelist for units of measure                 
+10 CL_COM_UNIT_MULT        Common codelist for unit multipliers                 
+11 CL_COM_URBANIZATION     Common codelist for urban/rural                      
+12 CL_EDUCATION_INDICATORS Codelist for EDUCATION indicators                    </code></pre>
+</div>
+</div>
+<p>Looks like this DSD uses the “CL_COM_ISCED11” codelist for education level. What are the codes and labels in that codelist?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>pdh_educ_codelist <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">keep</span>(</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  pdh_educ_DSD<span class="sc">@</span>codelists<span class="sc">@</span>codelists,</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>.x<span class="sc">@</span>id <span class="sc">==</span> <span class="st">"CL_COM_ISCED11"</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>)[[<span class="dv">1</span>]]</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">map</span>(</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>  pdh_educ_codelist<span class="sc">@</span>Code,</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>dplyr<span class="sc">::</span><span class="fu">tibble</span>(<span class="at">id =</span> .x<span class="sc">@</span>id, <span class="at">label =</span> .x<span class="sc">@</span>label<span class="sc">$</span>en)</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span> </span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">list_rbind</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 26 × 2
+   id    label                                  
+   &lt;chr&gt; &lt;chr&gt;                                  
+ 1 _T    All education levels                   
+ 2 X     No schooling                           
+ 3 0     Early childhood education              
+ 4 01    Early childhood educational development
+ 5 02    Pre-primary education                  
+ 6 1     Primary education                      
+ 7 10    Primary education                      
+ 8 1_g3  Primary education (Grade 3)            
+ 9 1_g5  Primary education (Grade 5)            
+10 1_g7  Primary education (Grade 7)            
+# ℹ 16 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="harmonizing-disparate-education-codelists" class="level1">
+<h1>Harmonizing disparate education codelists</h1>
+<p>To combine the data on educational attainment from Australia and selected Pacific island countries, we need a way to harmonize the educational coding schemes used by each. This is not such a daunting task when there are only two codelists to harmonize, but if we imagine trying to combine data from fifty or one-hundred different sources, it starts to sound like a whole project of its own. To make this task scalable, we need a common standard coding scheme, and crosswalks between each individual coding scheme and the common standard.</p>
+<p>IPUMS is a natural place to look for a common standard coding scheme, given that the IPUMS International project has created tables that harmonize data from several hundred censuses and national surveys from over 100 countries. But IPUMS and its harmonization tables are not documented according to SDMX standards, nor are there machine-actionable links between IPUMS harmonization tables and SDMX codelists. The IUSSP FAIR Vocabulary of Demography (FVD) could serve as the linking hub between data documented in SDMX on the one hand, and IPUMS harmonization tables on the other hand, with standard demographic terms such as “Educational attainment” linking to both.</p>
+<p>How would this work in the context of our example? First, members of the IPUMS, IUSSP, or SDMX communities would add links from FVD terms to corresponding IPUMS harmonization tables and SDMX artifacts such as concepts and codelists. For instance, the term “level of education” (<a href="http://en-ii.demopaedia.org/wiki/Level_of_education">here</a> is that term on Demopaedia) would have links to the harmonization table for the IPUMS International variable <a href="https://international.ipums.org/international-action/variables/edattain">EDATTAIN</a>, as well as links to codelists for measuring level of education such as CL_C21_HSCP02, CL_C21_QALLP02, and CL_COM_ISCED11.</p>
+<p>Once these links are in place, members of the IPUMS, IUSSP, or SDMX communities could integrate codelists into harmonization tables to which they are linked via the FVD. Here is a snippet of the EDATTAIN harmonization table for data from five Fijian census samples:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="rpajwyyahg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#rpajwyyahg table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#rpajwyyahg thead, #rpajwyyahg tbody, #rpajwyyahg tfoot, #rpajwyyahg tr, #rpajwyyahg td, #rpajwyyahg th {
+  border-style: none;
+}
+
+#rpajwyyahg p {
+  margin: 0;
+  padding: 0;
+}
+
+#rpajwyyahg .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#rpajwyyahg .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#rpajwyyahg .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#rpajwyyahg .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#rpajwyyahg .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#rpajwyyahg .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#rpajwyyahg .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#rpajwyyahg .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#rpajwyyahg .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#rpajwyyahg .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#rpajwyyahg .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#rpajwyyahg .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#rpajwyyahg .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#rpajwyyahg .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#rpajwyyahg .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#rpajwyyahg .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#rpajwyyahg .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#rpajwyyahg .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#rpajwyyahg .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rpajwyyahg .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#rpajwyyahg .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#rpajwyyahg .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#rpajwyyahg .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rpajwyyahg .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#rpajwyyahg .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#rpajwyyahg .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#rpajwyyahg .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rpajwyyahg .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#rpajwyyahg .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#rpajwyyahg .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#rpajwyyahg .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#rpajwyyahg .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#rpajwyyahg .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rpajwyyahg .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#rpajwyyahg .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rpajwyyahg .gt_left {
+  text-align: left;
+}
+
+#rpajwyyahg .gt_center {
+  text-align: center;
+}
+
+#rpajwyyahg .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#rpajwyyahg .gt_font_normal {
+  font-weight: normal;
+}
+
+#rpajwyyahg .gt_font_bold {
+  font-weight: bold;
+}
+
+#rpajwyyahg .gt_font_italic {
+  font-style: italic;
+}
+
+#rpajwyyahg .gt_super {
+  font-size: 65%;
+}
+
+#rpajwyyahg .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#rpajwyyahg .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#rpajwyyahg .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#rpajwyyahg .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#rpajwyyahg .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#rpajwyyahg .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#rpajwyyahg .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#rpajwyyahg .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#rpajwyyahg div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="header gt_col_headings">
+<th id="CODE" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">CODE</th>
+<th id="LABEL" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">LABEL</th>
+<th id="FJ1976A" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">FJ1976A</th>
+<th id="FJ1986A" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">FJ1986A</th>
+<th id="FJ1996A" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">FJ1996A</th>
+<th id="FJ2007A" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">FJ2007A</th>
+<th id="FJ2014A" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">FJ2014A</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_right" headers="CODE">110</td>
+<td class="gt_row gt_left" headers="LABEL">No schooling</td>
+<td class="gt_row gt_left" headers="FJ1976A">0 = No education</td>
+<td class="gt_row gt_left" headers="FJ1986A">0 = No education</td>
+<td class="gt_row gt_left" headers="FJ1996A">99 = NIU (not in universe)</td>
+<td class="gt_row gt_left" headers="FJ2007A">99 = NIU (not in universe)</td>
+<td class="gt_row gt_left" headers="FJ2014A">019 = Kirdengarten</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="CODE">110</td>
+<td class="gt_row gt_left" headers="LABEL">"</td>
+<td class="gt_row gt_left" headers="FJ1976A"></td>
+<td class="gt_row gt_left" headers="FJ1986A"></td>
+<td class="gt_row gt_left" headers="FJ1996A">0 = Kindergarten</td>
+<td class="gt_row gt_left" headers="FJ2007A">0 = Kindergarten</td>
+<td class="gt_row gt_left" headers="FJ2014A">999 = Never attended</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="CODE">110</td>
+<td class="gt_row gt_left" headers="LABEL">"</td>
+<td class="gt_row gt_left" headers="FJ1976A"></td>
+<td class="gt_row gt_left" headers="FJ1986A"></td>
+<td class="gt_row gt_left" headers="FJ1996A"></td>
+<td class="gt_row gt_left" headers="FJ2007A"></td>
+<td class="gt_row gt_left" headers="FJ2014A">029 = Year 1</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="CODE">120</td>
+<td class="gt_row gt_left" headers="LABEL">Some primary</td>
+<td class="gt_row gt_left" headers="FJ1976A">1 = Primary - Class 1</td>
+<td class="gt_row gt_left" headers="FJ1986A">1 = Primary, 1 year</td>
+<td class="gt_row gt_left" headers="FJ1996A">1 = Primary class 1</td>
+<td class="gt_row gt_left" headers="FJ2007A">1 = Primary - Class 1</td>
+<td class="gt_row gt_left" headers="FJ2014A">039 = Year 2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="CODE">120</td>
+<td class="gt_row gt_left" headers="LABEL">"</td>
+<td class="gt_row gt_left" headers="FJ1976A">2 = Primary - Class 2</td>
+<td class="gt_row gt_left" headers="FJ1986A">2 = Primary, 2 years</td>
+<td class="gt_row gt_left" headers="FJ1996A">2 = Primary class 2</td>
+<td class="gt_row gt_left" headers="FJ2007A">2 = Primary - Class 2</td>
+<td class="gt_row gt_left" headers="FJ2014A">049 = Year 3</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="CODE">120</td>
+<td class="gt_row gt_left" headers="LABEL">"</td>
+<td class="gt_row gt_left" headers="FJ1976A">3 = Primary - Class 3</td>
+<td class="gt_row gt_left" headers="FJ1986A">3 = Primary, 3 years</td>
+<td class="gt_row gt_left" headers="FJ1996A">3 = Primary class 3</td>
+<td class="gt_row gt_left" headers="FJ2007A">3 = Primary - Class 3</td>
+<td class="gt_row gt_left" headers="FJ2014A">059 = Year 4</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="CODE">120</td>
+<td class="gt_row gt_left" headers="LABEL">"</td>
+<td class="gt_row gt_left" headers="FJ1976A">4 = Primary - Class 4</td>
+<td class="gt_row gt_left" headers="FJ1986A">4 = Primary, 4 years</td>
+<td class="gt_row gt_left" headers="FJ1996A">4 = Primary class 4</td>
+<td class="gt_row gt_left" headers="FJ2007A">4 = Primary - Class 4</td>
+<td class="gt_row gt_left" headers="FJ2014A">069 = Year 5</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="CODE">120</td>
+<td class="gt_row gt_left" headers="LABEL">"</td>
+<td class="gt_row gt_left" headers="FJ1976A">5 = Primary - Class 5</td>
+<td class="gt_row gt_left" headers="FJ1986A">5 = Primary, 5 years</td>
+<td class="gt_row gt_left" headers="FJ1996A">5 = Primary class 5</td>
+<td class="gt_row gt_left" headers="FJ2007A">5 = Primary - Class 5</td>
+<td class="gt_row gt_left" headers="FJ2014A">079 = Year 6</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="CODE">212</td>
+<td class="gt_row gt_left" headers="LABEL">Primary (6 years)</td>
+<td class="gt_row gt_left" headers="FJ1976A">6 = Primary - Class 6</td>
+<td class="gt_row gt_left" headers="FJ1986A">6 = Primary, 6 years</td>
+<td class="gt_row gt_left" headers="FJ1996A">6 = Primary class 6</td>
+<td class="gt_row gt_left" headers="FJ2007A">6 = Primary - Class 6</td>
+<td class="gt_row gt_left" headers="FJ2014A">089 = Year 7</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="CODE">212</td>
+<td class="gt_row gt_left" headers="LABEL">"</td>
+<td class="gt_row gt_left" headers="FJ1976A"></td>
+<td class="gt_row gt_left" headers="FJ1986A"></td>
+<td class="gt_row gt_left" headers="FJ1996A"></td>
+<td class="gt_row gt_left" headers="FJ2007A"></td>
+<td class="gt_row gt_left" headers="FJ2014A">991 = Attended primary, year not specified</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="CODE">212</td>
+<td class="gt_row gt_left" headers="LABEL">"</td>
+<td class="gt_row gt_left" headers="FJ1976A">7 = Secondary - Form 1</td>
+<td class="gt_row gt_left" headers="FJ1986A">11 = Secondary, 1 year</td>
+<td class="gt_row gt_left" headers="FJ1996A">11 = Second form 1</td>
+<td class="gt_row gt_left" headers="FJ2007A">9 = Secondary - Form 1</td>
+<td class="gt_row gt_left" headers="FJ2014A">099 = Year 8</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="CODE">212</td>
+<td class="gt_row gt_left" headers="LABEL">"</td>
+<td class="gt_row gt_left" headers="FJ1976A">8 = Secondary - Form 2</td>
+<td class="gt_row gt_left" headers="FJ1986A">12 = Secondary, 2 years</td>
+<td class="gt_row gt_left" headers="FJ1996A">12 = Second form 2</td>
+<td class="gt_row gt_left" headers="FJ2007A">10 = Secondary - Form 2</td>
+<td class="gt_row gt_left" headers="FJ2014A">109 = Year 9</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="CODE">212</td>
+<td class="gt_row gt_left" headers="LABEL">"</td>
+<td class="gt_row gt_left" headers="FJ1976A">9 = Secondary - Form 3</td>
+<td class="gt_row gt_left" headers="FJ1986A">13 = Secondary, 3 years</td>
+<td class="gt_row gt_left" headers="FJ1996A">13 = Second form 3</td>
+<td class="gt_row gt_left" headers="FJ2007A">11 = Secondary - Form 3</td>
+<td class="gt_row gt_left" headers="FJ2014A">119 = Year 10</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="CODE">221</td>
+<td class="gt_row gt_left" headers="LABEL">General and unspecified track</td>
+<td class="gt_row gt_left" headers="FJ1976A">10 = Secondary - Form 4</td>
+<td class="gt_row gt_left" headers="FJ1986A">14 = Secondary, 4 years</td>
+<td class="gt_row gt_left" headers="FJ1996A">14 = Second form 4</td>
+<td class="gt_row gt_left" headers="FJ2007A">12 = Secondary - Form 4</td>
+<td class="gt_row gt_left" headers="FJ2014A">129 = Year 11</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="CODE">221</td>
+<td class="gt_row gt_left" headers="LABEL">"</td>
+<td class="gt_row gt_left" headers="FJ1976A">11 = Secondary - Form 5</td>
+<td class="gt_row gt_left" headers="FJ1986A">15 = Secondary, 5 years</td>
+<td class="gt_row gt_left" headers="FJ1996A">15 = Second form 5</td>
+<td class="gt_row gt_left" headers="FJ2007A">13 = Secondary - Form 5</td>
+<td class="gt_row gt_left" headers="FJ2014A">139 = Year 12</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="CODE">311</td>
+<td class="gt_row gt_left" headers="LABEL">"</td>
+<td class="gt_row gt_left" headers="FJ1976A">12 = Secondary - Form 6</td>
+<td class="gt_row gt_left" headers="FJ1986A">16 = Secondary, 6 years</td>
+<td class="gt_row gt_left" headers="FJ1996A">16 = Second form 6</td>
+<td class="gt_row gt_left" headers="FJ2007A">14 = Secondary - Form 6</td>
+<td class="gt_row gt_left" headers="FJ2014A">149 = Year 13</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="CODE">311</td>
+<td class="gt_row gt_left" headers="LABEL">"</td>
+<td class="gt_row gt_left" headers="FJ1976A"></td>
+<td class="gt_row gt_left" headers="FJ1986A"></td>
+<td class="gt_row gt_left" headers="FJ1996A">17 = Post-secondary</td>
+<td class="gt_row gt_left" headers="FJ2007A">15 = Post-Secondary (Form 7 or Foundation)</td>
+<td class="gt_row gt_left" headers="FJ2014A">179 = Foundation</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="CODE">311</td>
+<td class="gt_row gt_left" headers="LABEL">"</td>
+<td class="gt_row gt_left" headers="FJ1976A"></td>
+<td class="gt_row gt_left" headers="FJ1986A"></td>
+<td class="gt_row gt_left" headers="FJ1996A"></td>
+<td class="gt_row gt_left" headers="FJ2007A"></td>
+<td class="gt_row gt_left" headers="FJ2014A">992 = Attended secondary, year not specified</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="CODE">312</td>
+<td class="gt_row gt_left" headers="LABEL">Some college/university</td>
+<td class="gt_row gt_left" headers="FJ1976A">* = Currently attending university</td>
+<td class="gt_row gt_left" headers="FJ1986A">* = Currently attending tertiary</td>
+<td class="gt_row gt_left" headers="FJ1996A">* = Currently attending bachelor degree</td>
+<td class="gt_row gt_left" headers="FJ2007A">* = Currently attending degree</td>
+<td class="gt_row gt_left" headers="FJ2014A">209 = Degree, field not specified</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="CODE">322</td>
+<td class="gt_row gt_left" headers="LABEL">Post-secondary technical education</td>
+<td class="gt_row gt_left" headers="FJ1976A">13 = Teaching - NTC/CCTC etc</td>
+<td class="gt_row gt_left" headers="FJ1986A"></td>
+<td class="gt_row gt_left" headers="FJ1996A">21 = Certificate</td>
+<td class="gt_row gt_left" headers="FJ2007A">17 = Certificate - Year 1</td>
+<td class="gt_row gt_left" headers="FJ2014A">159 = Trade certificate, year not specified</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="CODE">322</td>
+<td class="gt_row gt_left" headers="LABEL">"</td>
+<td class="gt_row gt_left" headers="FJ1976A">14 = Teaching - USP</td>
+<td class="gt_row gt_left" headers="FJ1986A"></td>
+<td class="gt_row gt_left" headers="FJ1996A"></td>
+<td class="gt_row gt_left" headers="FJ2007A">18 = Certificate - Year 2+</td>
+<td class="gt_row gt_left" headers="FJ2014A">169 = Certificate, year not specified</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="CODE">322</td>
+<td class="gt_row gt_left" headers="LABEL">"</td>
+<td class="gt_row gt_left" headers="FJ1976A">16 = Technical - Govt</td>
+<td class="gt_row gt_left" headers="FJ1986A"></td>
+<td class="gt_row gt_left" headers="FJ1996A">22 = Diploma</td>
+<td class="gt_row gt_left" headers="FJ2007A">19 = Diploma - Year 1</td>
+<td class="gt_row gt_left" headers="FJ2014A">189 = Diploma, year not specified</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="CODE">322</td>
+<td class="gt_row gt_left" headers="LABEL">"</td>
+<td class="gt_row gt_left" headers="FJ1976A">17 = Technical - DTI</td>
+<td class="gt_row gt_left" headers="FJ1986A"></td>
+<td class="gt_row gt_left" headers="FJ1996A"></td>
+<td class="gt_row gt_left" headers="FJ2007A">20 = Diploma - Year 2+</td>
+<td class="gt_row gt_left" headers="FJ2014A"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="CODE">322</td>
+<td class="gt_row gt_left" headers="LABEL">"</td>
+<td class="gt_row gt_left" headers="FJ1976A">21 = Sub-professional agriculture</td>
+<td class="gt_row gt_left" headers="FJ1986A"></td>
+<td class="gt_row gt_left" headers="FJ1996A"></td>
+<td class="gt_row gt_left" headers="FJ2007A"></td>
+<td class="gt_row gt_left" headers="FJ2014A"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="CODE">322</td>
+<td class="gt_row gt_left" headers="LABEL">"</td>
+<td class="gt_row gt_left" headers="FJ1976A">23 = Sub-professional banking</td>
+<td class="gt_row gt_left" headers="FJ1986A"></td>
+<td class="gt_row gt_left" headers="FJ1996A"></td>
+<td class="gt_row gt_left" headers="FJ2007A"></td>
+<td class="gt_row gt_left" headers="FJ2014A"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="CODE">322</td>
+<td class="gt_row gt_left" headers="LABEL">"</td>
+<td class="gt_row gt_left" headers="FJ1976A">26 = Other sub-professional</td>
+<td class="gt_row gt_left" headers="FJ1986A"></td>
+<td class="gt_row gt_left" headers="FJ1996A"></td>
+<td class="gt_row gt_left" headers="FJ2007A"></td>
+<td class="gt_row gt_left" headers="FJ2014A"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="CODE">400</td>
+<td class="gt_row gt_left" headers="LABEL">UNIVERSITY COMPLETED</td>
+<td class="gt_row gt_left" headers="FJ1976A">18 = Health, medicine and dentistry studies</td>
+<td class="gt_row gt_left" headers="FJ1986A">17 = Tertiary</td>
+<td class="gt_row gt_left" headers="FJ1996A">23 = Bachelor's</td>
+<td class="gt_row gt_left" headers="FJ2007A">24 = Degree</td>
+<td class="gt_row gt_left" headers="FJ2014A">993 = Attended tertiary, type and year not specified</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="CODE">400</td>
+<td class="gt_row gt_left" headers="LABEL">4th year College (USA)</td>
+<td class="gt_row gt_left" headers="FJ1976A">19 = Nursing</td>
+<td class="gt_row gt_left" headers="FJ1986A"></td>
+<td class="gt_row gt_left" headers="FJ1996A">24 = Postgraduate diploma, Master's and Doctorate</td>
+<td class="gt_row gt_left" headers="FJ2007A">28 = Post Grad Certificate or Diploma</td>
+<td class="gt_row gt_left" headers="FJ2014A">219 = Postgraduate</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="CODE">400</td>
+<td class="gt_row gt_left" headers="LABEL">"</td>
+<td class="gt_row gt_left" headers="FJ1976A">20 = Professional agriculture</td>
+<td class="gt_row gt_left" headers="FJ1986A"></td>
+<td class="gt_row gt_left" headers="FJ1996A"></td>
+<td class="gt_row gt_left" headers="FJ2007A">35 = Masters and PhD</td>
+<td class="gt_row gt_left" headers="FJ2014A">229 = Master or PhD</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="CODE">400</td>
+<td class="gt_row gt_left" headers="LABEL">"</td>
+<td class="gt_row gt_left" headers="FJ1976A">22 = Professional banking</td>
+<td class="gt_row gt_left" headers="FJ1986A"></td>
+<td class="gt_row gt_left" headers="FJ1996A"></td>
+<td class="gt_row gt_left" headers="FJ2007A"></td>
+<td class="gt_row gt_left" headers="FJ2014A"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="CODE">400</td>
+<td class="gt_row gt_left" headers="LABEL">5th year or more College (USA)</td>
+<td class="gt_row gt_left" headers="FJ1976A">24 = Professional and technical architecture</td>
+<td class="gt_row gt_left" headers="FJ1986A"></td>
+<td class="gt_row gt_left" headers="FJ1996A"></td>
+<td class="gt_row gt_left" headers="FJ2007A"></td>
+<td class="gt_row gt_left" headers="FJ2014A"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="CODE">400</td>
+<td class="gt_row gt_left" headers="LABEL">"</td>
+<td class="gt_row gt_left" headers="FJ1976A">25 = Other profession</td>
+<td class="gt_row gt_left" headers="FJ1986A"></td>
+<td class="gt_row gt_left" headers="FJ1996A"></td>
+<td class="gt_row gt_left" headers="FJ2007A"></td>
+<td class="gt_row gt_left" headers="FJ2014A"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="CODE">999</td>
+<td class="gt_row gt_left" headers="LABEL">UNKNOWN/MISSING</td>
+<td class="gt_row gt_left" headers="FJ1976A">98 = Unknown</td>
+<td class="gt_row gt_left" headers="FJ1986A">98 = Unknown</td>
+<td class="gt_row gt_left" headers="FJ1996A">98 = Unknown</td>
+<td class="gt_row gt_left" headers="FJ2007A"></td>
+<td class="gt_row gt_left" headers="FJ2014A"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="CODE">999</td>
+<td class="gt_row gt_left" headers="LABEL">"</td>
+<td class="gt_row gt_left" headers="FJ1976A">15 = Theological - Christian</td>
+<td class="gt_row gt_left" headers="FJ1986A"></td>
+<td class="gt_row gt_left" headers="FJ1996A"></td>
+<td class="gt_row gt_left" headers="FJ2007A">40 = Other</td>
+<td class="gt_row gt_left" headers="FJ2014A">249 = Other qualification</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>The CODE and LABEL columns contain the code and label (or what would be called the id and label in SDMX parlance) for the IPUMS harmonized coding scheme. The other columns contain the input codes and labels from each data source, with a given input code aligned in the same row as the harmonized code to which it corresponds.</p>
+<p>We can integrate the three codelists CL_C21_HSCP02, CL_C21_QALLP02, and CL_COM_ISCED11 into this harmonization table in the same way. The table below shows an attempt to integrate these codelists according to the principles of EDATTAIN (see the “Comparability” tab of the <a href="https://international.ipums.org/international-action/variables/edattain">EDATTAIN documentation page</a>). However, because these codelists are used for aggregate data, whereas EDATTAIN is built from microdata, there are some incompatible values, highlighted in the table.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="jncnnbvnze" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#jncnnbvnze table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#jncnnbvnze thead, #jncnnbvnze tbody, #jncnnbvnze tfoot, #jncnnbvnze tr, #jncnnbvnze td, #jncnnbvnze th {
+  border-style: none;
+}
+
+#jncnnbvnze p {
+  margin: 0;
+  padding: 0;
+}
+
+#jncnnbvnze .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#jncnnbvnze .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#jncnnbvnze .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#jncnnbvnze .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#jncnnbvnze .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#jncnnbvnze .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#jncnnbvnze .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#jncnnbvnze .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#jncnnbvnze .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#jncnnbvnze .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#jncnnbvnze .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#jncnnbvnze .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#jncnnbvnze .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#jncnnbvnze .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#jncnnbvnze .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#jncnnbvnze .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#jncnnbvnze .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#jncnnbvnze .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#jncnnbvnze .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jncnnbvnze .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#jncnnbvnze .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#jncnnbvnze .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#jncnnbvnze .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jncnnbvnze .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#jncnnbvnze .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#jncnnbvnze .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#jncnnbvnze .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jncnnbvnze .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#jncnnbvnze .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#jncnnbvnze .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#jncnnbvnze .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#jncnnbvnze .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#jncnnbvnze .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jncnnbvnze .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#jncnnbvnze .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jncnnbvnze .gt_left {
+  text-align: left;
+}
+
+#jncnnbvnze .gt_center {
+  text-align: center;
+}
+
+#jncnnbvnze .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#jncnnbvnze .gt_font_normal {
+  font-weight: normal;
+}
+
+#jncnnbvnze .gt_font_bold {
+  font-weight: bold;
+}
+
+#jncnnbvnze .gt_font_italic {
+  font-style: italic;
+}
+
+#jncnnbvnze .gt_super {
+  font-size: 65%;
+}
+
+#jncnnbvnze .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#jncnnbvnze .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#jncnnbvnze .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#jncnnbvnze .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#jncnnbvnze .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#jncnnbvnze .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#jncnnbvnze .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#jncnnbvnze .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#jncnnbvnze div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="header gt_col_headings">
+<th id="CODE" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">CODE</th>
+<th id="LABEL" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">LABEL</th>
+<th id="CL_C21_HSCP02" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">CL_C21_HSCP02</th>
+<th id="CL_C21_QALLP02" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">CL_C21_QALLP02</th>
+<th id="CL_COM_ISCED11" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">CL_COM_ISCED11</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_right" headers="CODE">0</td>
+<td class="gt_row gt_left" headers="LABEL">NIU (not in universe)</td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02"></td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11">_Z = Not applicable</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="CODE">100</td>
+<td class="gt_row gt_left" headers="LABEL">LESS THAN PRIMARY COMPLETED</td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02"></td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11">0 = Early childhood education</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="CODE">100</td>
+<td class="gt_row gt_left" headers="LABEL"></td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02"></td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11">01 = Early childhood educational development</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="CODE">100</td>
+<td class="gt_row gt_left" headers="LABEL"></td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02"></td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11">02 = Pre-primary education</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="CODE">110</td>
+<td class="gt_row gt_left" headers="LABEL">No schooling</td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02">6 = Did not go to school</td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02"></td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11">X = No schooling</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="CODE">120</td>
+<td class="gt_row gt_left" headers="LABEL">Some primary</td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02"></td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11">1_g3 = Primary education (Grade 3)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="CODE">120</td>
+<td class="gt_row gt_left" headers="LABEL">"</td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02"></td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="CODE">130</td>
+<td class="gt_row gt_left" headers="LABEL">Primary (4 years)</td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02"></td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11">1_y4 = Primary education (Year 4)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="CODE">#</td>
+<td class="gt_row gt_left" headers="LABEL">PRIMARY COMPLETED, LESS THAN SECONDARY</td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02"></td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="CODE">#</td>
+<td class="gt_row gt_left" headers="LABEL">Primary completed</td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02"></td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="CODE">211</td>
+<td class="gt_row gt_left" headers="LABEL">Primary (5 years)</td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02"></td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11">1_g5 = Primary education (Grade 5)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="CODE">212</td>
+<td class="gt_row gt_left" headers="LABEL">Primary (6 years)</td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02" style="background-color: #FFFF00">5 = Year 8 or below</td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02"></td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11">1 = Primary education</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="CODE">212</td>
+<td class="gt_row gt_left" headers="LABEL">"</td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02"></td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11">10 = Primary education</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="CODE">212</td>
+<td class="gt_row gt_left" headers="LABEL">"</td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02"></td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11">1_y6 = Primary education (Year 6)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="CODE">212</td>
+<td class="gt_row gt_left" headers="LABEL">"</td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02"></td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11">1_g7 = Primary education (Grade 7)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="CODE">#</td>
+<td class="gt_row gt_left" headers="LABEL">Lower secondary completed</td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02"></td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="CODE">221</td>
+<td class="gt_row gt_left" headers="LABEL">General and unspecified track</td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02">4 = Year 9 or equivalent</td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02"></td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11" style="background-color: #FFFF00">2-3 = Secondary education (lower and upper secondary education)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="CODE">221</td>
+<td class="gt_row gt_left" headers="LABEL">"</td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02">3 = Year 10 or equivalent</td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02"></td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11">2 = Lower secondary education</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="CODE">221</td>
+<td class="gt_row gt_left" headers="LABEL">"</td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02">2 = Year 11 or equivalent</td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02"></td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="CODE">222</td>
+<td class="gt_row gt_left" headers="LABEL">Technical track</td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02"></td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="CODE">#</td>
+<td class="gt_row gt_left" headers="LABEL">SECONDARY COMPLETED</td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02"></td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="CODE">#</td>
+<td class="gt_row gt_left" headers="LABEL">General or unspecified track</td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02"></td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="CODE">311</td>
+<td class="gt_row gt_left" headers="LABEL">General track completed</td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02" style="background-color: #FFFF00">1 = Year 12 or equivalent</td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02"></td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11">3 = Upper secondary education</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="CODE">312</td>
+<td class="gt_row gt_left" headers="LABEL">Some college/university</td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02"></td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="CODE">320</td>
+<td class="gt_row gt_left" headers="LABEL">Technical track</td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02"></td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="CODE">321</td>
+<td class="gt_row gt_left" headers="LABEL">Secondary technical degree</td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02"></td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="CODE">322</td>
+<td class="gt_row gt_left" headers="LABEL">Post-secondary technical education</td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02" style="background-color: #FFFF00">5 = Certificate Level Total</td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11">4 = Post-secondary non-tertiary education</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="CODE">322</td>
+<td class="gt_row gt_left" headers="LABEL">"</td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02">51 = Certificate III and IV Level</td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11">5 = Short-cycle tertiary education</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="CODE">322</td>
+<td class="gt_row gt_left" headers="LABEL">"</td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02">52 = Certificate I and II Level</td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="CODE">322</td>
+<td class="gt_row gt_left" headers="LABEL">"</td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02">50 = Certificate Level, nfd</td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="CODE">400</td>
+<td class="gt_row gt_left" headers="LABEL">UNIVERSITY COMPLETED</td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02">1 = Postgraduate Degree Level</td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11">5-8 = Tertiary education</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="CODE">400</td>
+<td class="gt_row gt_left" headers="LABEL">"</td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02">2 = Graduate Diploma and Graduate Certificate Level</td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11">6 = Bachelor's or equivalent level</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="CODE">400</td>
+<td class="gt_row gt_left" headers="LABEL">"</td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02">3 = Bachelor Degree Level</td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11">7 = Master's or equivalent level</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="CODE">400</td>
+<td class="gt_row gt_left" headers="LABEL">"</td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02">4 = Advanced Diploma and Diploma Level</td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11">8 = Doctoral or equivalent level</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="CODE">400</td>
+<td class="gt_row gt_left" headers="LABEL">"</td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02"></td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="CODE">999</td>
+<td class="gt_row gt_left" headers="LABEL">UNKNOWN/MISSING</td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02" style="background-color: #FFFF00">_T = Total</td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02" style="background-color: #FFFF00">_T = Total</td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11" style="background-color: #FFFF00">_T = All education levels</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="CODE">999</td>
+<td class="gt_row gt_left" headers="LABEL">"</td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02">_N = Highest year of school not stated</td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02">0 = Level of education inadequately described</td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11">9 = Level not stated</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="CODE">999</td>
+<td class="gt_row gt_left" headers="LABEL">"</td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02">_N = Level of education not stated</td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11">OTH = Other</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="CODE">999</td>
+<td class="gt_row gt_left" headers="LABEL">"</td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02"></td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11">_U = Unknown</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="CODE">999</td>
+<td class="gt_row gt_left" headers="LABEL">"</td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02"></td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11">_X = Not allocated/unspecified</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>The highlighted values encompass multiple values of EDATTAIN. One way to handle this would be to adapt the harmonization table structure to support such codes, perhaps by placing such codes to the left of the harmonized codes:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="zuwrsadopm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#zuwrsadopm table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#zuwrsadopm thead, #zuwrsadopm tbody, #zuwrsadopm tfoot, #zuwrsadopm tr, #zuwrsadopm td, #zuwrsadopm th {
+  border-style: none;
+}
+
+#zuwrsadopm p {
+  margin: 0;
+  padding: 0;
+}
+
+#zuwrsadopm .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 75%;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#zuwrsadopm .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#zuwrsadopm .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#zuwrsadopm .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#zuwrsadopm .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#zuwrsadopm .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#zuwrsadopm .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#zuwrsadopm .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#zuwrsadopm .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#zuwrsadopm .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#zuwrsadopm .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#zuwrsadopm .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#zuwrsadopm .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#zuwrsadopm .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#zuwrsadopm .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#zuwrsadopm .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#zuwrsadopm .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#zuwrsadopm .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#zuwrsadopm .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zuwrsadopm .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#zuwrsadopm .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#zuwrsadopm .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#zuwrsadopm .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zuwrsadopm .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#zuwrsadopm .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#zuwrsadopm .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#zuwrsadopm .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zuwrsadopm .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#zuwrsadopm .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#zuwrsadopm .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#zuwrsadopm .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#zuwrsadopm .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#zuwrsadopm .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zuwrsadopm .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#zuwrsadopm .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zuwrsadopm .gt_left {
+  text-align: left;
+}
+
+#zuwrsadopm .gt_center {
+  text-align: center;
+}
+
+#zuwrsadopm .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#zuwrsadopm .gt_font_normal {
+  font-weight: normal;
+}
+
+#zuwrsadopm .gt_font_bold {
+  font-weight: bold;
+}
+
+#zuwrsadopm .gt_font_italic {
+  font-style: italic;
+}
+
+#zuwrsadopm .gt_super {
+  font-size: 65%;
+}
+
+#zuwrsadopm .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#zuwrsadopm .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#zuwrsadopm .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#zuwrsadopm .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#zuwrsadopm .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#zuwrsadopm .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#zuwrsadopm .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#zuwrsadopm .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#zuwrsadopm div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="header gt_col_headings">
+<th id="CL_COM_ISCED11" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">CL_COM_ISCED11</th>
+<th id="CL_COM_ISCED11.1" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">CL_COM_ISCED11</th>
+<th id="CL_C21_QALLP02" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">CL_C21_QALLP02</th>
+<th id="CL_C21_QALLP02.1" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">CL_C21_QALLP02</th>
+<th id="CL_C21_HSCP02" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">CL_C21_HSCP02</th>
+<th id="CL_C21_HSCP02.1" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">CL_C21_HSCP02</th>
+<th id="CODE" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">CODE</th>
+<th id="LABEL" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">LABEL</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="CL_COM_ISCED11">_T = All education levels</td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11.1"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02.1"></td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02">_T = Total</td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02.1">5 = Year 8 or below</td>
+<td class="gt_row gt_right" headers="CODE">100</td>
+<td class="gt_row gt_left" headers="LABEL">LESS THAN PRIMARY COMPLETED</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="CL_COM_ISCED11">_T = All education levels</td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11.1"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02.1"></td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02">_T = Total</td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02.1">5 = Year 8 or below</td>
+<td class="gt_row gt_right" headers="CODE">110</td>
+<td class="gt_row gt_left" headers="LABEL">No schooling</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="CL_COM_ISCED11">_T = All education levels</td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11.1"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02.1"></td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02">_T = Total</td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02.1">5 = Year 8 or below</td>
+<td class="gt_row gt_right" headers="CODE">120</td>
+<td class="gt_row gt_left" headers="LABEL">Some primary</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="CL_COM_ISCED11">_T = All education levels</td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11.1"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02.1"></td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02">_T = Total</td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02.1">5 = Year 8 or below</td>
+<td class="gt_row gt_right" headers="CODE">130</td>
+<td class="gt_row gt_left" headers="LABEL">Primary (4 years)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="CL_COM_ISCED11"></td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11.1"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02.1"></td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02"></td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02.1"></td>
+<td class="gt_row gt_right" headers="CODE">#</td>
+<td class="gt_row gt_left" headers="LABEL">PRIMARY COMPLETED, LESS THAN SECONDARY</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="CL_COM_ISCED11"></td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11.1"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02.1"></td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02"></td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02.1"></td>
+<td class="gt_row gt_right" headers="CODE">#</td>
+<td class="gt_row gt_left" headers="LABEL">Primary completed</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="CL_COM_ISCED11">_T = All education levels</td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11.1"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02.1"></td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02">_T = Total</td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02.1">5 = Year 8 or below</td>
+<td class="gt_row gt_right" headers="CODE">211</td>
+<td class="gt_row gt_left" headers="LABEL">Primary (5 years)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="CL_COM_ISCED11">_T = All education levels</td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11.1"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02.1"></td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02">_T = Total</td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02.1">5 = Year 8 or below</td>
+<td class="gt_row gt_right" headers="CODE">212</td>
+<td class="gt_row gt_left" headers="LABEL">Primary (6 years)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="CL_COM_ISCED11"></td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11.1"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02.1"></td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02"></td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02.1"></td>
+<td class="gt_row gt_right" headers="CODE">#</td>
+<td class="gt_row gt_left" headers="LABEL">Lower secondary completed</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="CL_COM_ISCED11">_T = All education levels</td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11.1">2-3 = Secondary education (lower and upper secondary education)</td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02.1"></td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02">_T = Total</td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02.1"></td>
+<td class="gt_row gt_right" headers="CODE">221</td>
+<td class="gt_row gt_left" headers="LABEL">General and unspecified track</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="CL_COM_ISCED11"></td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11.1"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02.1"></td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02"></td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02.1"></td>
+<td class="gt_row gt_right" headers="CODE">#</td>
+<td class="gt_row gt_left" headers="LABEL">SECONDARY COMPLETED</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="CL_COM_ISCED11"></td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11.1"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02.1"></td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02"></td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02.1"></td>
+<td class="gt_row gt_right" headers="CODE">#</td>
+<td class="gt_row gt_left" headers="LABEL">General or unspecified track</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="CL_COM_ISCED11">_T = All education levels</td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11.1">2-3 = Secondary education (lower and upper secondary education)</td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02.1"></td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02">_T = Total</td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02.1">1 = Year 12 or equivalent</td>
+<td class="gt_row gt_right" headers="CODE">311</td>
+<td class="gt_row gt_left" headers="LABEL">General track completed</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="CL_COM_ISCED11"></td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11.1"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02.1"></td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02"></td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02.1">1 = Year 12 or equivalent</td>
+<td class="gt_row gt_right" headers="CODE">312</td>
+<td class="gt_row gt_left" headers="LABEL">Some college/university</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="CL_COM_ISCED11"></td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11.1"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02.1"></td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02"></td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02.1">1 = Year 12 or equivalent</td>
+<td class="gt_row gt_right" headers="CODE">320</td>
+<td class="gt_row gt_left" headers="LABEL">Technical track</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="CL_COM_ISCED11"></td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11.1"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02.1"></td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02"></td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02.1">1 = Year 12 or equivalent</td>
+<td class="gt_row gt_right" headers="CODE">321</td>
+<td class="gt_row gt_left" headers="LABEL">Secondary technical degree</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="CL_COM_ISCED11">_T = All education levels</td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11.1"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02">_T = Total</td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02.1">5 = Certificate Level Total</td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02"></td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02.1">1 = Year 12 or equivalent</td>
+<td class="gt_row gt_right" headers="CODE">322</td>
+<td class="gt_row gt_left" headers="LABEL">Post-secondary technical education</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="CL_COM_ISCED11">_T = All education levels</td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11.1"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02">_T = Total</td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02.1"></td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02"></td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02.1">1 = Year 12 or equivalent</td>
+<td class="gt_row gt_right" headers="CODE">400</td>
+<td class="gt_row gt_left" headers="LABEL">UNIVERSITY COMPLETED</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="CL_COM_ISCED11">_T = All education levels</td>
+<td class="gt_row gt_left" headers="CL_COM_ISCED11.1"></td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02">_T = Total</td>
+<td class="gt_row gt_left" headers="CL_C21_QALLP02.1"></td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02">_T = Total</td>
+<td class="gt_row gt_left" headers="CL_C21_HSCP02.1"></td>
+<td class="gt_row gt_right" headers="CODE">999</td>
+<td class="gt_row gt_left" headers="LABEL">UNKNOWN/MISSING</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="leveraging-harmonized-codelists" class="level1">
+<h1>Leveraging harmonized codelists</h1>
+<p>Now that we’ve integrated all of these codelists into a harmonized coding scheme, we can pull down the dataflows and compare them side by side. First we can pull down the ABS data:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>abs_highest_yr_of_school_dataflow <span class="ot">&lt;-</span> rsdmx<span class="sc">::</span><span class="fu">readSDMX</span>(</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">providerId =</span> <span class="st">"ABS"</span>,</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">resource =</span> <span class="st">"data"</span>,</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">flowRef =</span> <span class="st">"C21_G16_CED"</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[rsdmx][INFO] Fetching 'https://api.data.abs.gov.au/data/C21_G16_CED/all/all/' </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>abs_highest_yr_of_school_tbl <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">as_tibble</span>(abs_highest_yr_of_school_dataflow)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>abs_highest_non_school_qual_dataflow <span class="ot">&lt;-</span> rsdmx<span class="sc">::</span><span class="fu">readSDMX</span>(</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">providerId =</span> <span class="st">"ABS"</span>,</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">resource =</span> <span class="st">"data"</span>,</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">flowRef =</span> <span class="st">"C21_G49_CED"</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[rsdmx][INFO] Fetching 'https://api.data.abs.gov.au/data/C21_G49_CED/all/all/' </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>abs_highest_non_school_qual_tbl <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">as_tibble</span>(abs_highest_non_school_qual_dataflow)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>And now the PDH data:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>pdh_educ_dataflow <span class="ot">&lt;-</span> rsdmx<span class="sc">::</span><span class="fu">readSDMX</span>(</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">providerId =</span> <span class="st">"PDH"</span>,</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">resource =</span> <span class="st">"data"</span>,</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">flowRef =</span> <span class="st">"DF_EDUCATION"</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[rsdmx][INFO] Fetching 'https://stats-nsi-stable.pacificdata.org/rest/data/DF_EDUCATION/all/all/' </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>pdh_educ_tbl <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">as_tibble</span>(pdh_educ_dataflow)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let first summarize the ABS data to the national level:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>abs_highest_yr_of_school_tbl_natl <span class="ot">&lt;-</span> abs_highest_yr_of_school_tbl <span class="sc">|&gt;</span> </span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarize</span>(</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">n_persons =</span> <span class="fu">sum</span>(obsValue),</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">.by =</span> <span class="fu">c</span>(SEXP, HSCP, AGEP, obsTime)</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>abs_highest_non_school_qual_tbl_natl <span class="ot">&lt;-</span> abs_highest_non_school_qual_tbl <span class="sc">|&gt;</span> </span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarize</span>(</span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">n_persons =</span> <span class="fu">sum</span>(obsValue),</span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">.by =</span> <span class="fu">c</span>(SEXP, QALLP, AGEP, obsTime)</span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Based on the descriptions of these dataflows that we pulled down with all ABS dataflows, the highest year of school table includes persons 15 years and over who are no longer attending primary or secondary school, whereas the highest non-school qualification table includes persons 15 years and over with a non-school qualification. We can combine these if we assume that anyone with a non-school qualification completed the 12th grade of school. Does that assumption hold up if we compare the counts?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>persons_completing_12th_grade <span class="ot">&lt;-</span> abs_highest_yr_of_school_tbl_natl <span class="sc">|&gt;</span> </span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(HSCP <span class="sc">==</span> <span class="st">"1"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarize</span>(</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">n_completing_12th_grade =</span> <span class="fu">sum</span>(n_persons),</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">.by =</span> <span class="fu">c</span>(SEXP, AGEP)</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>persons_with_a_non_school_qual <span class="ot">&lt;-</span> abs_highest_non_school_qual_tbl_natl <span class="sc">|&gt;</span> </span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(QALLP <span class="sc">%in%</span> <span class="fu">as.character</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarize</span>(</span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">n_with_non_school_qual =</span> <span class="fu">sum</span>(n_persons),</span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">.by =</span> <span class="fu">c</span>(SEXP, AGEP)</span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a>persons_completing_12th_grade <span class="sc">|&gt;</span> </span>
+<span id="cb38-16"><a href="#cb38-16" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">full_join</span>(persons_with_a_non_school_qual)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Joining with `by = join_by(SEXP, AGEP)`</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 33 × 4
+   SEXP  AGEP  n_completing_12th_grade n_with_non_school_qual
+   &lt;chr&gt; &lt;chr&gt;                   &lt;dbl&gt;                  &lt;dbl&gt;
+ 1 3     20_24                 1240581                     NA
+ 2 3     15_19                  375967                     NA
+ 3 3     65_74                  968244                1140391
+ 4 3     _T                   11729401               11374148
+ 5 1     55_64                  649544                 857860
+ 6 3     75_84                  409713                 470153
+ 7 1     65_74                  499592                 631040
+ 8 2     45_54                 1062280                1078482
+ 9 2     35_44                 1364172                1316730
+10 1     _T                    5572028                5632986
+# ℹ 23 more rows</code></pre>
+</div>
+</div>
+<p>Hmm, it looks like that assumption doesn’t hold up – there are more people with a non-school qualification than there are people who have completed 12th grade in many of these groups. This suggests that we can’t combine these tables in any straightforward way. This means we will need a new strategy to compare the ABS statistics to those from PDH. One approach we can try is to topcode the PDH statistics at “Upper secondary or higher”.</p>
+<p>Let’s see how we would use our restructured harmonization table to recode the ABS and PDH statistics into a single coding scheme:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co">#' Attach harmonized codes and labels to variable in a data.frame using a harmonization table</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="co">#' </span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param df Data containing a variable to be harmonized</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param harmonization_table Path to the harmonization table</span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param harmonized_var_name Name of the harmonized variable</span></span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param var_to_harmonize Column name of variable to harmonize</span></span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param codelist_id Identifier for the codelist used by the variable to harmonize</span></span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>attach_harmonized_codes_and_labels <span class="ot">&lt;-</span> <span class="cf">function</span>(df,</span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>                                               harmonization_table,</span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>                                               harmonized_var_name,</span>
+<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a>                                               var_to_harmonize,</span>
+<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a>                                               codelist_id) {</span>
+<span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a>  raw_harmonization_table <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(harmonization_table)</span>
+<span id="cb41-14"><a href="#cb41-14" aria-hidden="true" tabindex="-1"></a>  micro_recodes <span class="ot">&lt;-</span> <span class="fu">get_micro_recodes</span>(raw_harmonization_table)</span>
+<span id="cb41-15"><a href="#cb41-15" aria-hidden="true" tabindex="-1"></a>  aggregate_recodes <span class="ot">&lt;-</span> <span class="fu">get_aggregate_recodes</span>(raw_harmonization_table)</span>
+<span id="cb41-16"><a href="#cb41-16" aria-hidden="true" tabindex="-1"></a>  micro_recoding_key <span class="ot">&lt;-</span> <span class="fu">make_micro_recoding_key</span>(micro_recodes)</span>
+<span id="cb41-17"><a href="#cb41-17" aria-hidden="true" tabindex="-1"></a>  aggregate_recoding_key <span class="ot">&lt;-</span> <span class="fu">make_aggregate_recoding_key</span>(aggregate_recodes)</span>
+<span id="cb41-18"><a href="#cb41-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">attach_harmonized_recodes</span>(</span>
+<span id="cb41-19"><a href="#cb41-19" aria-hidden="true" tabindex="-1"></a>    df, </span>
+<span id="cb41-20"><a href="#cb41-20" aria-hidden="true" tabindex="-1"></a>    micro_recoding_key, </span>
+<span id="cb41-21"><a href="#cb41-21" aria-hidden="true" tabindex="-1"></a>    aggregate_recoding_key,</span>
+<span id="cb41-22"><a href="#cb41-22" aria-hidden="true" tabindex="-1"></a>    harmonized_var_name,</span>
+<span id="cb41-23"><a href="#cb41-23" aria-hidden="true" tabindex="-1"></a>    var_to_harmonize,</span>
+<span id="cb41-24"><a href="#cb41-24" aria-hidden="true" tabindex="-1"></a>    codelist_id</span>
+<span id="cb41-25"><a href="#cb41-25" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb41-26"><a href="#cb41-26" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb41-27"><a href="#cb41-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-28"><a href="#cb41-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-29"><a href="#cb41-29" aria-hidden="true" tabindex="-1"></a>get_aggregate_recodes <span class="ot">&lt;-</span> <span class="cf">function</span>(raw_harmonization_table) {</span>
+<span id="cb41-30"><a href="#cb41-30" aria-hidden="true" tabindex="-1"></a>  label_column_index <span class="ot">&lt;-</span> <span class="fu">which</span>(<span class="fu">names</span>(raw_harmonization_table) <span class="sc">==</span> <span class="st">"LABEL"</span>)</span>
+<span id="cb41-31"><a href="#cb41-31" aria-hidden="true" tabindex="-1"></a>  raw_harmonization_table[ , <span class="dv">1</span><span class="sc">:</span>label_column_index]</span>
+<span id="cb41-32"><a href="#cb41-32" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb41-33"><a href="#cb41-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-34"><a href="#cb41-34" aria-hidden="true" tabindex="-1"></a>get_micro_recodes <span class="ot">&lt;-</span> <span class="cf">function</span>(raw_harmonization_table) {</span>
+<span id="cb41-35"><a href="#cb41-35" aria-hidden="true" tabindex="-1"></a>  code_column_index <span class="ot">&lt;-</span> <span class="fu">which</span>(<span class="fu">names</span>(raw_harmonization_table) <span class="sc">==</span> <span class="st">"CODE"</span>)</span>
+<span id="cb41-36"><a href="#cb41-36" aria-hidden="true" tabindex="-1"></a>  raw_harmonization_table[ , code_column_index<span class="sc">:</span><span class="fu">ncol</span>(raw_harmonization_table)]</span>
+<span id="cb41-37"><a href="#cb41-37" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb41-38"><a href="#cb41-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-39"><a href="#cb41-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-40"><a href="#cb41-40" aria-hidden="true" tabindex="-1"></a>make_micro_recoding_key <span class="ot">&lt;-</span> <span class="cf">function</span>(micro_recodes) {</span>
+<span id="cb41-41"><a href="#cb41-41" aria-hidden="true" tabindex="-1"></a>  micro_recodes <span class="sc">|&gt;</span> </span>
+<span id="cb41-42"><a href="#cb41-42" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb41-43"><a href="#cb41-43" aria-hidden="true" tabindex="-1"></a>      <span class="at">LABEL =</span> dplyr<span class="sc">::</span><span class="fu">if_else</span>(</span>
+<span id="cb41-44"><a href="#cb41-44" aria-hidden="true" tabindex="-1"></a>        stringr<span class="sc">::</span><span class="fu">str_detect</span>(LABEL, <span class="st">"^$|^</span><span class="sc">\\</span><span class="st">s*</span><span class="sc">\"\\</span><span class="st">s*$"</span>),</span>
+<span id="cb41-45"><a href="#cb41-45" aria-hidden="true" tabindex="-1"></a>        <span class="cn">NA_character_</span>,</span>
+<span id="cb41-46"><a href="#cb41-46" aria-hidden="true" tabindex="-1"></a>        LABEL</span>
+<span id="cb41-47"><a href="#cb41-47" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb41-48"><a href="#cb41-48" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> </span>
+<span id="cb41-49"><a href="#cb41-49" aria-hidden="true" tabindex="-1"></a>    tidyr<span class="sc">::</span><span class="fu">fill</span>(LABEL) <span class="sc">|&gt;</span> </span>
+<span id="cb41-50"><a href="#cb41-50" aria-hidden="true" tabindex="-1"></a>    tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(</span>
+<span id="cb41-51"><a href="#cb41-51" aria-hidden="true" tabindex="-1"></a>      <span class="at">cols =</span> <span class="fu">c</span>(<span class="sc">-</span>CODE, <span class="sc">-</span>LABEL), </span>
+<span id="cb41-52"><a href="#cb41-52" aria-hidden="true" tabindex="-1"></a>      <span class="at">names_to =</span> <span class="st">".codelist_id"</span>, </span>
+<span id="cb41-53"><a href="#cb41-53" aria-hidden="true" tabindex="-1"></a>      <span class="at">values_to =</span> <span class="st">"input_code_and_label"</span></span>
+<span id="cb41-54"><a href="#cb41-54" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> </span>
+<span id="cb41-55"><a href="#cb41-55" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">filter</span>(input_code_and_label <span class="sc">!=</span> <span class="st">""</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb41-56"><a href="#cb41-56" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb41-57"><a href="#cb41-57" aria-hidden="true" tabindex="-1"></a>      <span class="at">.codelist_id =</span> stringr<span class="sc">::</span><span class="fu">str_remove</span>(.codelist_id, <span class="st">"</span><span class="sc">\\</span><span class="st">.[0-9]+$"</span>),</span>
+<span id="cb41-58"><a href="#cb41-58" aria-hidden="true" tabindex="-1"></a>      <span class="at">input_code =</span> stringr<span class="sc">::</span><span class="fu">str_extract</span>(input_code_and_label, <span class="st">"^.+(?= =)"</span>),</span>
+<span id="cb41-59"><a href="#cb41-59" aria-hidden="true" tabindex="-1"></a>      <span class="at">input_label =</span> stringr<span class="sc">::</span><span class="fu">str_extract</span>(input_code_and_label, <span class="st">"(?&lt;== ).+$"</span>),</span>
+<span id="cb41-60"><a href="#cb41-60" aria-hidden="true" tabindex="-1"></a>      <span class="at">LABEL =</span> stringr<span class="sc">::</span><span class="fu">str_trim</span>(LABEL)</span>
+<span id="cb41-61"><a href="#cb41-61" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb41-62"><a href="#cb41-62" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb41-63"><a href="#cb41-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-64"><a href="#cb41-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-65"><a href="#cb41-65" aria-hidden="true" tabindex="-1"></a>make_aggregate_recoding_key <span class="ot">&lt;-</span> <span class="cf">function</span>(aggregate_recodes) {</span>
+<span id="cb41-66"><a href="#cb41-66" aria-hidden="true" tabindex="-1"></a>  aggregate_recodes <span class="sc">|&gt;</span> </span>
+<span id="cb41-67"><a href="#cb41-67" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">filter</span>(dplyr<span class="sc">::</span><span class="fu">if_any</span>(<span class="at">.cols =</span> <span class="fu">c</span>(<span class="sc">-</span>CODE, <span class="sc">-</span>LABEL), <span class="at">.fns =</span> <span class="sc">~</span>.x <span class="sc">!=</span> <span class="st">""</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb41-68"><a href="#cb41-68" aria-hidden="true" tabindex="-1"></a>    tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(</span>
+<span id="cb41-69"><a href="#cb41-69" aria-hidden="true" tabindex="-1"></a>      <span class="at">cols =</span> <span class="fu">c</span>(<span class="sc">-</span>CODE, <span class="sc">-</span>LABEL), </span>
+<span id="cb41-70"><a href="#cb41-70" aria-hidden="true" tabindex="-1"></a>      <span class="at">names_to =</span> <span class="st">".codelist_id"</span>, </span>
+<span id="cb41-71"><a href="#cb41-71" aria-hidden="true" tabindex="-1"></a>      <span class="at">values_to =</span> <span class="st">"recode_and_label"</span></span>
+<span id="cb41-72"><a href="#cb41-72" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> </span>
+<span id="cb41-73"><a href="#cb41-73" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">filter</span>(recode_and_label <span class="sc">!=</span> <span class="st">""</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb41-74"><a href="#cb41-74" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb41-75"><a href="#cb41-75" aria-hidden="true" tabindex="-1"></a>      <span class="at">.codelist_id =</span> stringr<span class="sc">::</span><span class="fu">str_remove</span>(.codelist_id, <span class="st">"</span><span class="sc">\\</span><span class="st">.[0-9]+$"</span>),</span>
+<span id="cb41-76"><a href="#cb41-76" aria-hidden="true" tabindex="-1"></a>      <span class="at">recode =</span> stringr<span class="sc">::</span><span class="fu">str_extract</span>(recode_and_label, <span class="st">"^.+(?= =)"</span>),</span>
+<span id="cb41-77"><a href="#cb41-77" aria-hidden="true" tabindex="-1"></a>      <span class="at">recode_label =</span> stringr<span class="sc">::</span><span class="fu">str_extract</span>(recode_and_label, <span class="st">"(?&lt;== ).+$"</span>),</span>
+<span id="cb41-78"><a href="#cb41-78" aria-hidden="true" tabindex="-1"></a>      <span class="at">LABEL =</span> stringr<span class="sc">::</span><span class="fu">str_trim</span>(LABEL)</span>
+<span id="cb41-79"><a href="#cb41-79" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> </span>
+<span id="cb41-80"><a href="#cb41-80" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>recode_and_label) <span class="sc">|&gt;</span> </span>
+<span id="cb41-81"><a href="#cb41-81" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb41-82"><a href="#cb41-82" aria-hidden="true" tabindex="-1"></a>      <span class="at">min_code =</span> <span class="fu">min</span>(CODE),</span>
+<span id="cb41-83"><a href="#cb41-83" aria-hidden="true" tabindex="-1"></a>      <span class="at">max_code =</span> <span class="fu">max</span>(CODE),</span>
+<span id="cb41-84"><a href="#cb41-84" aria-hidden="true" tabindex="-1"></a>      <span class="at">min_label =</span> LABEL[CODE <span class="sc">==</span> <span class="fu">min</span>(CODE)][[<span class="dv">1</span>]],</span>
+<span id="cb41-85"><a href="#cb41-85" aria-hidden="true" tabindex="-1"></a>      <span class="at">max_label =</span> LABEL[CODE <span class="sc">==</span> <span class="fu">max</span>(CODE)][[<span class="dv">1</span>]],</span>
+<span id="cb41-86"><a href="#cb41-86" aria-hidden="true" tabindex="-1"></a>      <span class="at">.by =</span> <span class="fu">c</span>(.codelist_id, recode)</span>
+<span id="cb41-87"><a href="#cb41-87" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> </span>
+<span id="cb41-88"><a href="#cb41-88" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb41-89"><a href="#cb41-89" aria-hidden="true" tabindex="-1"></a>      <span class="at">standardized_recode =</span> <span class="fu">paste0</span>(min_code, <span class="st">"-"</span>, max_code), </span>
+<span id="cb41-90"><a href="#cb41-90" aria-hidden="true" tabindex="-1"></a>      <span class="at">standardized_recode_label =</span> <span class="fu">paste0</span>(min_label, <span class="st">" - "</span>, max_label)</span>
+<span id="cb41-91"><a href="#cb41-91" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb41-92"><a href="#cb41-92" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb41-93"><a href="#cb41-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-94"><a href="#cb41-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-95"><a href="#cb41-95" aria-hidden="true" tabindex="-1"></a>attach_harmonized_recodes <span class="ot">&lt;-</span> <span class="cf">function</span>(df, </span>
+<span id="cb41-96"><a href="#cb41-96" aria-hidden="true" tabindex="-1"></a>                                      micro_recoding_key, </span>
+<span id="cb41-97"><a href="#cb41-97" aria-hidden="true" tabindex="-1"></a>                                      aggregate_recoding_key,</span>
+<span id="cb41-98"><a href="#cb41-98" aria-hidden="true" tabindex="-1"></a>                                      harmonized_var_name,</span>
+<span id="cb41-99"><a href="#cb41-99" aria-hidden="true" tabindex="-1"></a>                                      var_to_harmonize,</span>
+<span id="cb41-100"><a href="#cb41-100" aria-hidden="true" tabindex="-1"></a>                                      codelist_id) {</span>
+<span id="cb41-101"><a href="#cb41-101" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb41-102"><a href="#cb41-102" aria-hidden="true" tabindex="-1"></a>  harmonized_var_name <span class="ot">&lt;-</span> rlang<span class="sc">::</span><span class="fu">sym</span>(harmonized_var_name)</span>
+<span id="cb41-103"><a href="#cb41-103" aria-hidden="true" tabindex="-1"></a>  harmonized_var_label <span class="ot">&lt;-</span> rlang<span class="sc">::</span><span class="fu">sym</span>(<span class="fu">paste0</span>(harmonized_var_name, <span class="st">"_LABEL"</span>))</span>
+<span id="cb41-104"><a href="#cb41-104" aria-hidden="true" tabindex="-1"></a>  harmonized_var_name_agg <span class="ot">&lt;-</span> rlang<span class="sc">::</span><span class="fu">sym</span>(<span class="fu">paste0</span>(harmonized_var_name, <span class="st">"_agg"</span>))</span>
+<span id="cb41-105"><a href="#cb41-105" aria-hidden="true" tabindex="-1"></a>  harmonized_var_label_agg <span class="ot">&lt;-</span> rlang<span class="sc">::</span><span class="fu">sym</span>(<span class="fu">paste0</span>(harmonized_var_name, <span class="st">"_agg_LABEL"</span>))</span>
+<span id="cb41-106"><a href="#cb41-106" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb41-107"><a href="#cb41-107" aria-hidden="true" tabindex="-1"></a>  df <span class="sc">|&gt;</span> </span>
+<span id="cb41-108"><a href="#cb41-108" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">left_join</span>(</span>
+<span id="cb41-109"><a href="#cb41-109" aria-hidden="true" tabindex="-1"></a>      micro_recoding_key <span class="sc">|&gt;</span> </span>
+<span id="cb41-110"><a href="#cb41-110" aria-hidden="true" tabindex="-1"></a>        dplyr<span class="sc">::</span><span class="fu">filter</span>(.codelist_id <span class="sc">==</span> codelist_id) <span class="sc">|&gt;</span> </span>
+<span id="cb41-111"><a href="#cb41-111" aria-hidden="true" tabindex="-1"></a>        dplyr<span class="sc">::</span><span class="fu">select</span>(</span>
+<span id="cb41-112"><a href="#cb41-112" aria-hidden="true" tabindex="-1"></a>          <span class="sc">!!</span><span class="at">harmonized_var_name :=</span> CODE, </span>
+<span id="cb41-113"><a href="#cb41-113" aria-hidden="true" tabindex="-1"></a>          <span class="sc">!!</span><span class="at">harmonized_var_label :=</span> LABEL, </span>
+<span id="cb41-114"><a href="#cb41-114" aria-hidden="true" tabindex="-1"></a>          <span class="sc">!!</span>rlang<span class="sc">::</span><span class="fu">sym</span>(var_to_harmonize) <span class="sc">:</span><span class="er">=</span> input_code</span>
+<span id="cb41-115"><a href="#cb41-115" aria-hidden="true" tabindex="-1"></a>        ),</span>
+<span id="cb41-116"><a href="#cb41-116" aria-hidden="true" tabindex="-1"></a>      <span class="at">by =</span> var_to_harmonize</span>
+<span id="cb41-117"><a href="#cb41-117" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> </span>
+<span id="cb41-118"><a href="#cb41-118" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">left_join</span>(</span>
+<span id="cb41-119"><a href="#cb41-119" aria-hidden="true" tabindex="-1"></a>      aggregate_recoding_key <span class="sc">|&gt;</span> </span>
+<span id="cb41-120"><a href="#cb41-120" aria-hidden="true" tabindex="-1"></a>        dplyr<span class="sc">::</span><span class="fu">filter</span>(.codelist_id <span class="sc">==</span> codelist_id) <span class="sc">|&gt;</span> </span>
+<span id="cb41-121"><a href="#cb41-121" aria-hidden="true" tabindex="-1"></a>        dplyr<span class="sc">::</span><span class="fu">distinct</span>(standardized_recode, standardized_recode_label, recode) <span class="sc">|&gt;</span> </span>
+<span id="cb41-122"><a href="#cb41-122" aria-hidden="true" tabindex="-1"></a>        dplyr<span class="sc">::</span><span class="fu">select</span>(</span>
+<span id="cb41-123"><a href="#cb41-123" aria-hidden="true" tabindex="-1"></a>          <span class="sc">!!</span><span class="at">harmonized_var_name_agg :=</span> standardized_recode, </span>
+<span id="cb41-124"><a href="#cb41-124" aria-hidden="true" tabindex="-1"></a>          <span class="sc">!!</span><span class="at">harmonized_var_label_agg :=</span> standardized_recode_label, </span>
+<span id="cb41-125"><a href="#cb41-125" aria-hidden="true" tabindex="-1"></a>          <span class="sc">!!</span>rlang<span class="sc">::</span><span class="fu">sym</span>(var_to_harmonize) <span class="sc">:</span><span class="er">=</span> recode</span>
+<span id="cb41-126"><a href="#cb41-126" aria-hidden="true" tabindex="-1"></a>        ),</span>
+<span id="cb41-127"><a href="#cb41-127" aria-hidden="true" tabindex="-1"></a>      <span class="at">by =</span> var_to_harmonize</span>
+<span id="cb41-128"><a href="#cb41-128" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> </span>
+<span id="cb41-129"><a href="#cb41-129" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb41-130"><a href="#cb41-130" aria-hidden="true" tabindex="-1"></a>      <span class="sc">!!</span><span class="at">harmonized_var_name :=</span> dplyr<span class="sc">::</span><span class="fu">coalesce</span>(</span>
+<span id="cb41-131"><a href="#cb41-131" aria-hidden="true" tabindex="-1"></a>        <span class="sc">!!</span>harmonized_var_name, </span>
+<span id="cb41-132"><a href="#cb41-132" aria-hidden="true" tabindex="-1"></a>        <span class="sc">!!</span>harmonized_var_name_agg</span>
+<span id="cb41-133"><a href="#cb41-133" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb41-134"><a href="#cb41-134" aria-hidden="true" tabindex="-1"></a>      <span class="sc">!!</span><span class="at">harmonized_var_label :=</span> dplyr<span class="sc">::</span><span class="fu">coalesce</span>(</span>
+<span id="cb41-135"><a href="#cb41-135" aria-hidden="true" tabindex="-1"></a>        <span class="sc">!!</span>harmonized_var_label, </span>
+<span id="cb41-136"><a href="#cb41-136" aria-hidden="true" tabindex="-1"></a>        <span class="sc">!!</span>harmonized_var_label_agg</span>
+<span id="cb41-137"><a href="#cb41-137" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb41-138"><a href="#cb41-138" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> </span>
+<span id="cb41-139"><a href="#cb41-139" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>(dplyr<span class="sc">::</span><span class="fu">contains</span>(<span class="st">"_agg"</span>)))</span>
+<span id="cb41-140"><a href="#cb41-140" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>abs_harmonized <span class="ot">&lt;-</span> <span class="fu">attach_harmonized_codes_and_labels</span>(</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  abs_highest_yr_of_school_tbl_natl,</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">harmonization_table =</span> </span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"EDATTAIN_harmonization_table_with_integrated_codelists_and_alternate_structure.csv"</span>,</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">harmonized_var_name =</span> <span class="st">"EDATTAIN"</span>,</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">var_to_harmonize =</span> <span class="st">"HSCP"</span>,</span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">codelist_id =</span> <span class="st">"CL_C21_HSCP02"</span></span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>pdh_harmonized <span class="ot">&lt;-</span> <span class="fu">attach_harmonized_codes_and_labels</span>(</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  pdh_educ_tbl,</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">harmonization_table =</span> </span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"EDATTAIN_harmonization_table_with_integrated_codelists_and_alternate_structure.csv"</span>,</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">harmonized_var_name =</span> <span class="st">"EDATTAIN"</span>,</span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">var_to_harmonize =</span> <span class="st">"EDUCATION"</span>,</span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">codelist_id =</span> <span class="st">"CL_COM_ISCED11"</span></span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now let’s see the range of harmonized codes and labels in each dataset:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>abs_harmonized <span class="sc">|&gt;</span> </span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">distinct</span>(EDATTAIN, EDATTAIN_LABEL) <span class="sc">|&gt;</span> </span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">arrange</span>(EDATTAIN)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 2
+  EDATTAIN EDATTAIN_LABEL                                 
+  &lt;chr&gt;    &lt;chr&gt;                                          
+1 100-212  LESS THAN PRIMARY COMPLETED - Primary (6 years)
+2 100-999  LESS THAN PRIMARY COMPLETED - UNKNOWN/MISSING  
+3 110      No schooling                                   
+4 221      General and unspecified track                  
+5 311-400  General track completed - UNIVERSITY COMPLETED 
+6 999      UNKNOWN/MISSING                                </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>pdh_harmonized <span class="sc">|&gt;</span> </span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">distinct</span>(EDATTAIN, EDATTAIN_LABEL) <span class="sc">|&gt;</span> </span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">arrange</span>(EDATTAIN)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 8 × 2
+  EDATTAIN EDATTAIN_LABEL                               
+  &lt;chr&gt;    &lt;chr&gt;                                        
+1 100      LESS THAN PRIMARY COMPLETED                  
+2 100-999  LESS THAN PRIMARY COMPLETED - UNKNOWN/MISSING
+3 212      Primary (6 years)                            
+4 221      General and unspecified track                
+5 311      General track completed                      
+6 322      Post-secondary technical education           
+7 400      UNIVERSITY COMPLETED                         
+8 999      UNKNOWN/MISSING                              </code></pre>
+</div>
+</div>
+<p>Looks like we can compare using codes 100-212, 221, 311-400, and 999.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>pdh_harmonized_collapsed <span class="ot">&lt;-</span> pdh_harmonized <span class="sc">|&gt;</span> </span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">EDATTAIN_collapsed =</span> dplyr<span class="sc">::</span><span class="fu">case_when</span>(</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>      EDATTAIN <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">212</span>) <span class="sc">~</span> <span class="st">"100-212"</span>,</span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>      EDATTAIN <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">311</span>, <span class="dv">322</span>, <span class="dv">400</span>) <span class="sc">~</span> <span class="st">"311-400"</span>,</span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">.default =</span> EDATTAIN</span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The description for the PDH data doesn’t mention an age universe, but the age categories in the data suggest the universe is persons 25 and over, so we should limit the ABS data to that age range for the comparison. What are the codes for ages 25 and over?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>CL_C21_AGEP04_codelist <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">keep</span>(</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>  abs_highest_yr_of_school_DSD_codelists,</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>.x<span class="sc">@</span>id <span class="sc">==</span> <span class="st">"CL_C21_AGEP04"</span></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>)[[<span class="dv">1</span>]]</span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">map</span>(</span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>  CL_C21_AGEP04_codelist<span class="sc">@</span>Code,</span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>dplyr<span class="sc">::</span><span class="fu">tibble</span>(<span class="at">id =</span> .x<span class="sc">@</span>id, <span class="at">label =</span> .x<span class="sc">@</span>label<span class="sc">$</span>en)</span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span> </span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">list_rbind</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 2
+   id    label            
+   &lt;chr&gt; &lt;chr&gt;            
+ 1 _T    Total            
+ 2 15_19 15-19 years      
+ 3 20_24 20-24 years      
+ 4 25_34 25-34 years      
+ 5 35_44 35-44 years      
+ 6 45_54 45-54 years      
+ 7 55_64 55-64 years      
+ 8 65_74 65-74 years      
+ 9 75_84 75-84 years      
+10 GE85  85 years and over</code></pre>
+</div>
+</div>
+<p>Looks like we want everything except codes “_T”, “15_19”, and “20_24”.</p>
+<p>Now let’s limit the statistics to totals by age and sex, and then we can combine them:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>abs_harmonized_totals <span class="ot">&lt;-</span> abs_harmonized <span class="sc">|&gt;</span> </span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(SEXP <span class="sc">==</span> <span class="dv">3</span> <span class="sc">&amp;</span> <span class="sc">!</span>AGEP <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"_T"</span>, <span class="st">"15_19"</span>, <span class="st">"20_24"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarize</span>(<span class="at">n_persons =</span> <span class="fu">sum</span>(n_persons), <span class="at">.by =</span> <span class="fu">c</span>(EDATTAIN, EDATTAIN_LABEL)) <span class="sc">|&gt;</span> </span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(EDATTAIN <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"100-212"</span>, <span class="st">"221"</span>, <span class="st">"311-400"</span>, <span class="st">"999"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">pct =</span> <span class="fu">round</span>(<span class="dv">100</span> <span class="sc">*</span> n_persons <span class="sc">/</span> <span class="fu">sum</span>(n_persons), <span class="dv">2</span>),</span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">country =</span> <span class="st">"AU"</span></span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a>pdh_harmonized_totals <span class="ot">&lt;-</span> pdh_harmonized_collapsed <span class="sc">|&gt;</span> </span>
+<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(SEX <span class="sc">==</span> <span class="st">"_T"</span> <span class="sc">&amp;</span> AGE <span class="sc">==</span> <span class="st">"_T"</span> <span class="sc">&amp;</span> DISABILITY <span class="sc">==</span> <span class="st">"_T"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarize</span>(<span class="at">n_persons =</span> <span class="fu">sum</span>(obsValue), <span class="at">.by =</span> <span class="fu">c</span>(GEO_PICT, EDATTAIN_collapsed)) <span class="sc">|&gt;</span> </span>
+<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(EDATTAIN_collapsed <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"100-212"</span>, <span class="st">"221"</span>, <span class="st">"311-400"</span>, <span class="st">"999"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">pct =</span> <span class="fu">round</span>(<span class="dv">100</span> <span class="sc">*</span> n_persons <span class="sc">/</span> <span class="fu">sum</span>(n_persons), <span class="dv">2</span>), <span class="at">.by =</span> GEO_PICT) <span class="sc">|&gt;</span> </span>
+<span id="cb51-15"><a href="#cb51-15" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">rename</span>(<span class="at">country =</span> GEO_PICT, <span class="at">EDATTAIN =</span> EDATTAIN_collapsed) <span class="sc">|&gt;</span> </span>
+<span id="cb51-16"><a href="#cb51-16" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">left_join</span>(</span>
+<span id="cb51-17"><a href="#cb51-17" aria-hidden="true" tabindex="-1"></a>    abs_harmonized_totals <span class="sc">|&gt;</span> </span>
+<span id="cb51-18"><a href="#cb51-18" aria-hidden="true" tabindex="-1"></a>      dplyr<span class="sc">::</span><span class="fu">distinct</span>(EDATTAIN, EDATTAIN_LABEL),</span>
+<span id="cb51-19"><a href="#cb51-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">by =</span> <span class="st">"EDATTAIN"</span></span>
+<span id="cb51-20"><a href="#cb51-20" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb51-21"><a href="#cb51-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-22"><a href="#cb51-22" aria-hidden="true" tabindex="-1"></a>combined_harmonized_totals <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">bind_rows</span>(abs_harmonized_totals, pdh_harmonized_totals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now let’s join on the country labels:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>CL_COM_GEO_PICT_codelist <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">keep</span>(</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>  pdh_educ_DSD_codelists,</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>.x<span class="sc">@</span>id <span class="sc">==</span> <span class="st">"CL_COM_GEO_PICT"</span></span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>)[[<span class="dv">1</span>]]</span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>country_codes <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map</span>(</span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a>  CL_COM_GEO_PICT_codelist<span class="sc">@</span>Code,</span>
+<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>dplyr<span class="sc">::</span><span class="fu">tibble</span>(<span class="at">id =</span> .x<span class="sc">@</span>id, <span class="at">label =</span> .x<span class="sc">@</span>label<span class="sc">$</span>en)</span>
+<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span> </span>
+<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">list_rbind</span>()</span>
+<span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-12"><a href="#cb52-12" aria-hidden="true" tabindex="-1"></a>combined_harmonized_totals <span class="ot">&lt;-</span> combined_harmonized_totals <span class="sc">|&gt;</span> </span>
+<span id="cb52-13"><a href="#cb52-13" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">left_join</span>(</span>
+<span id="cb52-14"><a href="#cb52-14" aria-hidden="true" tabindex="-1"></a>    country_codes <span class="sc">|&gt;</span> </span>
+<span id="cb52-15"><a href="#cb52-15" aria-hidden="true" tabindex="-1"></a>      dplyr<span class="sc">::</span><span class="fu">rename</span>(<span class="at">country =</span> id, <span class="at">country_label =</span> label), </span>
+<span id="cb52-16"><a href="#cb52-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">by =</span> <span class="st">"country"</span></span>
+<span id="cb52-17"><a href="#cb52-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb52-18"><a href="#cb52-18" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb52-19"><a href="#cb52-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">country_label =</span> dplyr<span class="sc">::</span><span class="fu">if_else</span>(country <span class="sc">==</span> <span class="st">"AU"</span>, <span class="st">"Australia"</span>, country_label)</span>
+<span id="cb52-20"><a href="#cb52-20" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now we can plot the distributions:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>combined_harmonized_totals <span class="sc">|&gt;</span> </span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">edattain_start_numeric =</span> <span class="fu">as.numeric</span>(stringr<span class="sc">::</span><span class="fu">str_extract</span>(EDATTAIN, <span class="st">"^[0-9]+"</span>)),</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">EDATTAIN_LABEL =</span> dplyr<span class="sc">::</span><span class="fu">case_match</span>(</span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>      EDATTAIN_LABEL,</span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>      <span class="st">"General and unspecified track"</span> <span class="sc">~</span> <span class="st">"Lower secondary completed"</span>,</span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>      <span class="st">"General track completed - UNIVERSITY COMPLETED"</span> <span class="sc">~</span> <span class="st">"Upper secondary or higher completed"</span>,</span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>      <span class="st">"LESS THAN PRIMARY COMPLETED - Primary (6 years)"</span> <span class="sc">~</span> <span class="st">"Primary completed or less"</span>,</span>
+<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">.default =</span> EDATTAIN_LABEL</span>
+<span id="cb53-10"><a href="#cb53-10" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb53-11"><a href="#cb53-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb53-12"><a href="#cb53-12" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(</span>
+<span id="cb53-13"><a href="#cb53-13" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">x =</span> forcats<span class="sc">::</span><span class="fu">fct_reorder</span>(EDATTAIN_LABEL, edattain_start_numeric, <span class="at">.desc =</span> <span class="cn">TRUE</span>), <span class="at">y =</span> pct)</span>
+<span id="cb53-14"><a href="#cb53-14" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb53-15"><a href="#cb53-15" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">geom_col</span>() <span class="sc">+</span> </span>
+<span id="cb53-16"><a href="#cb53-16" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">facet_wrap</span>(<span class="sc">~</span>country_label) <span class="sc">+</span></span>
+<span id="cb53-17"><a href="#cb53-17" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb53-18"><a href="#cb53-18" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">labs</span>(</span>
+<span id="cb53-19"><a href="#cb53-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">title =</span> <span class="st">"Educational attainment, selected countries in Oceania"</span>, </span>
+<span id="cb53-20"><a href="#cb53-20" aria-hidden="true" tabindex="-1"></a>      <span class="at">subtitle =</span> <span class="st">"Persons age 25+"</span>,</span>
+<span id="cb53-21"><a href="#cb53-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> <span class="cn">NULL</span>, </span>
+<span id="cb53-22"><a href="#cb53-22" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> <span class="st">"%"</span>,</span>
+<span id="cb53-23"><a href="#cb53-23" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption =</span> <span class="st">"Sources: Australian Bureau of Statistics and Pacific Data Hub"</span></span>
+<span id="cb53-24"><a href="#cb53-24" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="harmonize-sdmx-education-codelists_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid figure-img" width="864"></p>
+</figure>
+</div>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

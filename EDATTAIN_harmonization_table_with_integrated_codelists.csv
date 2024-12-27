@@ -1,0 +1,41 @@
+CODE,LABEL,CL_C21_HSCP02,CL_C21_QALLP02,CL_COM_ISCED11
+0,NIU (not in universe),,,_Z = Not applicable
+100,LESS THAN PRIMARY COMPLETED,,,0 = Early childhood education
+100,,,,01 = Early childhood educational development
+100,,,,02 = Pre-primary education
+110,   No schooling,6 = Did not go to school,,X = No schooling
+120,   Some primary,,,1_g3 = Primary education (Grade 3)
+120,"   """,,,
+130,   Primary (4 years),,,1_y4 = Primary education (Year 4)
+#,"PRIMARY COMPLETED, LESS THAN SECONDARY",,,
+#,   Primary completed,,,
+211,      Primary (5 years),,,1_g5 = Primary education (Grade 5)
+212,      Primary (6 years),5 = Year 8 or below,,1 = Primary education
+212,"      """,,,10 = Primary education
+212,"      """,,,1_y6 = Primary education (Year 6)
+212,"      """,,,1_g7 = Primary education (Grade 7)
+#,   Lower secondary completed,,,
+221,      General and unspecified track,4 = Year 9 or equivalent,,2-3 = Secondary education (lower and upper secondary education)
+221,"      """,3 = Year 10 or equivalent,,2 = Lower secondary education
+221,"      """,2 = Year 11 or equivalent,,
+222,      Technical track,,,
+#,SECONDARY COMPLETED,,,
+#,   General or unspecified track,,,
+311,      General track completed,1 = Year 12 or equivalent,,3 = Upper secondary education
+312,      Some college/university,,,
+320,   Technical track,,,
+321,      Secondary technical degree,,,
+322,      Post-secondary technical education,,5 = Certificate Level Total,4 = Post-secondary non-tertiary education
+322,"      """,,51 = Certificate III and IV Level,5 = Short-cycle tertiary education
+322,"      """,,52 = Certificate I and II Level,
+322,"      """,,"50 = Certificate Level, nfd",
+400,UNIVERSITY COMPLETED,,1 = Postgraduate Degree Level,5-8 = Tertiary education
+400,"""",,2 = Graduate Diploma and Graduate Certificate Level,6 = Bachelor's or equivalent level
+400,"""",,3 = Bachelor Degree Level,7 = Master's or equivalent level
+400,"""",,4 = Advanced Diploma and Diploma Level,8 = Doctoral or equivalent level
+400,"""",,,
+999,UNKNOWN/MISSING,_T = Total,_T = Total,_T = All education levels
+999,"""",_N = Highest year of school not stated,0 = Level of education inadequately described,9 = Level not stated
+999,"""",,_N = Level of education not stated,OTH = Other
+999,"""",,,_U = Unknown
+999,"""",,,_X = Not allocated/unspecified

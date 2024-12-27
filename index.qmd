@@ -1,0 +1,8 @@
+---
+title: "IUSSP Vocabulary of Demography and SDMX"
+---
+
+Creating links between the in-development IUSSP FAIR Vocabulary of Demography and databases documented with SDMX creates exciting possibilities. Here are a couple use cases:
+
+-   [Combining UNICEF indicators with IPUMS International data](get-educ-stats-from-unicef-api.qmd)
+-   [Harmonizing SDMX educational codelists](harmonize-sdmx-education-codelists.qmd)

@@ -1,0 +1,606 @@
+---
+title: "Harmonizing SDMX education codelists"
+---
+
+Let's try to find two dataflows with disaggregations by education from two different data providers. What data providers are available?
+
+```{r}
+all_data_providers <- rsdmx::getSDMXServiceProviders()
+
+purrr::map(
+  all_data_providers@providers,
+  ~dplyr::tibble(id = .x@agencyId, name = .x@name)
+) |> 
+  purrr::list_rbind() |> 
+  print(n = 30)
+```
+
+# Finding an education codelist from ABS
+
+Now let's find a dataflow with disaggregations by education from the Australian Bureau of Statistics:
+
+```{r}
+all_abs_dataflows <- rsdmx::readSDMX(
+  providerId = "ABS",
+  resource = "dataflow"
+)
+all_abs_dataflows_table <- dplyr::as_tibble(all_abs_dataflows)
+```
+
+After some interactive searching, I discovered that the ABS reports educational attainment separately for highest year of primary or secondary school (up to year 12) completed and for highest "non-school qualification", where non-school qualifications are levels of education other than pre-primary, primary, and secondary. For highest year of (primary or secondary) school completed, we can use "Census 2021, G16 Highest year of school completed by age by sex, Commonwealth Electoral Divisions (CED 2021 boundaries)" dataflow, which uses the "C21_G16_CED" data structure definition (DSD), and for highest non-school qualification, we can use "Census 2021, G49 Highest non-school qualification: level of education by age by sex, Commonwealth Electoral Divisions (CED 2021 boundaries)" dataflow, which uses the "C21_G49_CED" DSD.
+
+```{r}
+abs_highest_yr_of_school_DSD <- rsdmx::readSDMX(
+  providerId = "ABS",
+  resource = "datastructure",
+  resourceId = "C21_G16_CED"
+)
+
+abs_highest_non_school_qual_DSD <- rsdmx::readSDMX(
+  providerId = "ABS",
+  resource = "datastructure",
+  resourceId = "C21_G49_CED"
+)
+```
+
+Now let's look at the codelists used in those DSDs, starting with highest year of school:
+
+```{r}
+abs_highest_yr_of_school_DSD_codelists <-
+  abs_highest_yr_of_school_DSD@codelists@codelists
+
+purrr::map(
+  abs_highest_yr_of_school_DSD_codelists,
+  ~dplyr::tibble(id = .x@id, name = .x@Name$en)
+) |> 
+  purrr::list_rbind()
+```
+
+This DSD uses the "CL_C21_HSCP02" codelist. Let's see the codes and labels for that codelist:
+
+```{r}
+CL_C21_HSCP02_codelist <- purrr::keep(
+  abs_highest_yr_of_school_DSD_codelists,
+  ~.x@id == "CL_C21_HSCP02"
+)[[1]]
+
+purrr::map(
+  CL_C21_HSCP02_codelist@Code,
+  ~dplyr::tibble(id = .x@id, label = .x@label$en)
+) |> 
+  purrr::list_rbind()
+```
+
+Now for non-school qualification:
+
+```{r}
+abs_highest_non_school_qual_DSD_codelists <-
+  abs_highest_non_school_qual_DSD@codelists@codelists
+
+purrr::map(
+  abs_highest_non_school_qual_DSD_codelists,
+  ~dplyr::tibble(id = .x@id, name = .x@Name$en)
+) |> 
+  purrr::list_rbind()
+```
+
+This DSD uses the "CL_C21_QALLP02" codelist. Let's see the codes and labels for that codelist:
+
+```{r}
+CL_C21_QALLP02_codelist <- purrr::keep(
+  abs_highest_non_school_qual_DSD_codelists,
+  ~.x@id == "CL_C21_QALLP02"
+)[[1]]
+
+purrr::map(
+  CL_C21_QALLP02_codelist@Code,
+  ~dplyr::tibble(id = .x@id, label = .x@label$en)
+) |> 
+  purrr::list_rbind()
+```
+
+# Finding an education codelist from PDH
+
+Now let's find a dataflow with disaggregations by education from the Pacific Data Hub:
+
+```{r}
+all_pdh_dataflows <- rsdmx::readSDMX(
+  providerId = "PDH",
+  resource = "dataflow"
+)
+all_pdh_dataflows_table <- dplyr::as_tibble(all_pdh_dataflows)
+```
+
+Let's see which dataflows mention education:
+
+```{r}
+all_pdh_dataflows_table |> 
+  dplyr::filter(stringr::str_detect(Name.en, "[Ee]ducation")) |> 
+  dplyr::select(id, Name.en, dsdRef)
+```
+
+The dataflow "Education Attainment by country age, sex, urbanisation, and disability status", which uses the "DSD_EDUCATION" DSD, looks like a good candidate. Let's pull down information on that DSD:
+
+```{r}
+pdh_educ_DSD <- rsdmx::readSDMX(
+  providerId = "PDH",
+  resource = "datastructure",
+  resourceId = "DSD_EDUCATION"
+)
+```
+
+What codelists are used by that DSD?
+
+```{r}
+pdh_educ_DSD_codelists <-
+  pdh_educ_DSD@codelists@codelists
+
+purrr::map(
+  pdh_educ_DSD_codelists,
+  ~dplyr::tibble(id = .x@id, name = .x@Name$en)
+) |> 
+  purrr::list_rbind()
+```
+
+Looks like this DSD uses the "CL_COM_ISCED11" codelist for education level. What are the codes and labels in that codelist?
+
+```{r}
+pdh_educ_codelist <- purrr::keep(
+  pdh_educ_DSD@codelists@codelists,
+  ~.x@id == "CL_COM_ISCED11"
+)[[1]]
+
+purrr::map(
+  pdh_educ_codelist@Code,
+  ~dplyr::tibble(id = .x@id, label = .x@label$en)
+) |> 
+  purrr::list_rbind()
+```
+
+# Harmonizing disparate education codelists
+
+To combine the data on educational attainment from Australia and selected Pacific island countries, we need a way to harmonize the educational coding schemes used by each. This is not such a daunting task when there are only two codelists to harmonize, but if we imagine trying to combine data from fifty or one-hundred different sources, it starts to sound like a whole project of its own. To make this task scalable, we need a common standard coding scheme, and crosswalks between each individual coding scheme and the common standard.
+
+IPUMS is a natural place to look for a common standard coding scheme, given that the IPUMS International project has created tables that harmonize data from several hundred censuses and national surveys from over 100 countries. But IPUMS and its harmonization tables are not documented according to SDMX standards, nor are there machine-actionable links between IPUMS harmonization tables and SDMX codelists. The IUSSP FAIR Vocabulary of Demography (FVD) could serve as the linking hub between data documented in SDMX on the one hand, and IPUMS harmonization tables on the other hand, with standard demographic terms such as "Educational attainment" linking to both.
+
+How would this work in the context of our example? First, members of the IPUMS, IUSSP, or SDMX communities would add links from FVD terms to corresponding IPUMS harmonization tables and SDMX artifacts such as concepts and codelists. For instance, the term "level of education" ([here](http://en-ii.demopaedia.org/wiki/Level_of_education) is that term on Demopaedia) would have links to the harmonization table for the IPUMS International variable [EDATTAIN](https://international.ipums.org/international-action/variables/edattain), as well as links to codelists for measuring level of education such as CL_C21_HSCP02, CL_C21_QALLP02, and CL_COM_ISCED11.
+
+Once these links are in place, members of the IPUMS, IUSSP, or SDMX communities could integrate codelists into harmonization tables to which they are linked via the FVD. Here is a snippet of the EDATTAIN harmonization table for data from five Fijian census samples:
+
+```{r}
+#| echo: false
+edattain_harmonization_table <- read.csv("EDATTAIN_harmonization_table.csv") |> 
+  dplyr::as_tibble()
+
+edattain_harmonization_table |> 
+  dplyr::select(c(CODE, LABEL, dplyr::starts_with("FJ"))) |> 
+  dplyr::filter(dplyr::if_any(dplyr::starts_with("FJ"), ~.x != "")) |> 
+  dplyr::filter(CODE != "") |> 
+  dplyr::mutate(LABEL = dplyr::if_else(LABEL == "", "\"", LABEL)) |> 
+  gt::gt()
+```
+
+The CODE and LABEL columns contain the code and label (or what would be called the id and label in SDMX parlance) for the IPUMS harmonized coding scheme. The other columns contain the input codes and labels from each data source, with a given input code aligned in the same row as the harmonized code to which it corresponds.
+
+We can integrate the three codelists CL_C21_HSCP02, CL_C21_QALLP02, and CL_COM_ISCED11 into this harmonization table in the same way. The table below shows an attempt to integrate these codelists according to the principles of EDATTAIN (see the "Comparability" tab of the [EDATTAIN documentation page](https://international.ipums.org/international-action/variables/edattain)). However, because these codelists are used for aggregate data, whereas EDATTAIN is built from microdata, there are some incompatible values, highlighted in the table.
+
+```{r}
+#| echo: false
+edattain_harmonization_table_with_codelists <- read.csv(
+  "EDATTAIN_harmonization_table_with_integrated_codelists.csv"
+) |> 
+  dplyr::as_tibble()
+
+edattain_harmonization_table_with_codelists |> 
+  gt::gt() |> 
+  gt::tab_style(
+    style = gt::cell_fill("yellow"),
+    locations = gt::cells_body(
+      columns = CL_C21_HSCP02,
+      rows = CL_C21_HSCP02 %in% c("5 = Year 8 or below", "1 = Year 12 or equivalent", "_T = Total")
+    )
+  ) |> 
+  gt::tab_style(
+    style = gt::cell_fill("yellow"),
+    locations = gt::cells_body(
+      columns = CL_C21_QALLP02,
+      rows = CL_C21_QALLP02 %in% c("5 = Certificate Level Total", "_T = Total")
+    )
+  ) |> 
+  gt::tab_style(
+    style = gt::cell_fill("yellow"),
+    locations = gt::cells_body(
+      columns = CL_COM_ISCED11,
+      rows = CL_COM_ISCED11 %in% c(
+        "_T = All education levels", 
+        "2-3 = Secondary education (lower and upper secondary education)"
+      )
+    )
+  )
+```
+
+The highlighted values encompass multiple values of EDATTAIN. One way to handle this would be to adapt the harmonization table structure to support such codes, perhaps by placing such codes to the left of the harmonized codes:
+
+```{r}
+#| echo: false
+edattain_harmonization_table_with_new_structure <- read.csv(
+  "EDATTAIN_harmonization_table_with_integrated_codelists_and_alternate_structure.csv"
+)
+
+last_col_to_include <- which(
+  names(edattain_harmonization_table_with_new_structure) == "LABEL"
+)
+
+edattain_harmonization_table_with_new_structure[, 1:last_col_to_include] |> 
+  dplyr::filter(
+    dplyr::if_any(.cols = dplyr::starts_with("CL"), ~.x != "") | 
+      stringr::str_detect(CODE, "#")) |> 
+  gt::gt() |> 
+  gt::cols_label_with(fn = ~stringr::str_remove(.x, "\\.1$")) |> 
+  gt::tab_options(table.font.size = gt::pct(75))
+```
+
+# Leveraging harmonized codelists
+
+Now that we've integrated all of these codelists into a harmonized coding scheme, we can pull down the dataflows and compare them side by side. First we can pull down the ABS data:
+
+```{r}
+abs_highest_yr_of_school_dataflow <- rsdmx::readSDMX(
+  providerId = "ABS",
+  resource = "data",
+  flowRef = "C21_G16_CED"
+)
+abs_highest_yr_of_school_tbl <- dplyr::as_tibble(abs_highest_yr_of_school_dataflow)
+
+abs_highest_non_school_qual_dataflow <- rsdmx::readSDMX(
+  providerId = "ABS",
+  resource = "data",
+  flowRef = "C21_G49_CED"
+)
+
+abs_highest_non_school_qual_tbl <- dplyr::as_tibble(abs_highest_non_school_qual_dataflow)
+```
+
+And now the PDH data:
+
+```{r}
+pdh_educ_dataflow <- rsdmx::readSDMX(
+  providerId = "PDH",
+  resource = "data",
+  flowRef = "DF_EDUCATION"
+)
+pdh_educ_tbl <- dplyr::as_tibble(pdh_educ_dataflow)
+```
+
+Let first summarize the ABS data to the national level:
+
+```{r}
+abs_highest_yr_of_school_tbl_natl <- abs_highest_yr_of_school_tbl |> 
+  dplyr::summarize(
+    n_persons = sum(obsValue),
+    .by = c(SEXP, HSCP, AGEP, obsTime)
+  )
+
+abs_highest_non_school_qual_tbl_natl <- abs_highest_non_school_qual_tbl |> 
+  dplyr::summarize(
+    n_persons = sum(obsValue),
+    .by = c(SEXP, QALLP, AGEP, obsTime)
+  )
+```
+
+Based on the descriptions of these dataflows that we pulled down with all ABS dataflows, the highest year of school table includes persons 15 years and over who are no longer attending primary or secondary school, whereas the highest non-school qualification table includes persons 15 years and over with a non-school qualification. We can combine these if we assume that anyone with a non-school qualification completed the 12th grade of school. Does that assumption hold up if we compare the counts?
+
+```{r}
+persons_completing_12th_grade <- abs_highest_yr_of_school_tbl_natl |> 
+  dplyr::filter(HSCP == "1") |> 
+  dplyr::summarize(
+    n_completing_12th_grade = sum(n_persons),
+    .by = c(SEXP, AGEP)
+  )
+
+persons_with_a_non_school_qual <- abs_highest_non_school_qual_tbl_natl |> 
+  dplyr::filter(QALLP %in% as.character(1:5)) |> 
+  dplyr::summarize(
+    n_with_non_school_qual = sum(n_persons),
+    .by = c(SEXP, AGEP)
+  )
+
+persons_completing_12th_grade |> 
+  dplyr::full_join(persons_with_a_non_school_qual)
+```
+
+Hmm, it looks like that assumption doesn't hold up – there are more people with a non-school qualification than there are people who have completed 12th grade in many of these groups. This suggests that we can't combine these tables in any straightforward way. This means we will need a new strategy to compare the ABS statistics to those from PDH. One approach we can try is to topcode the PDH statistics at "Upper secondary or higher".
+
+Let's see how we would use our restructured harmonization table to recode the ABS and PDH statistics into a single coding scheme:
+
+```{r}
+#' Attach harmonized codes and labels to variable in a data.frame using a harmonization table
+#' 
+#' @param df Data containing a variable to be harmonized
+#' @param harmonization_table Path to the harmonization table
+#' @param harmonized_var_name Name of the harmonized variable
+#' @param var_to_harmonize Column name of variable to harmonize
+#' @param codelist_id Identifier for the codelist used by the variable to harmonize
+attach_harmonized_codes_and_labels <- function(df,
+                                               harmonization_table,
+                                               harmonized_var_name,
+                                               var_to_harmonize,
+                                               codelist_id) {
+  raw_harmonization_table <- read.csv(harmonization_table)
+  micro_recodes <- get_micro_recodes(raw_harmonization_table)
+  aggregate_recodes <- get_aggregate_recodes(raw_harmonization_table)
+  micro_recoding_key <- make_micro_recoding_key(micro_recodes)
+  aggregate_recoding_key <- make_aggregate_recoding_key(aggregate_recodes)
+  attach_harmonized_recodes(
+    df, 
+    micro_recoding_key, 
+    aggregate_recoding_key,
+    harmonized_var_name,
+    var_to_harmonize,
+    codelist_id
+  )
+}
+
+
+get_aggregate_recodes <- function(raw_harmonization_table) {
+  label_column_index <- which(names(raw_harmonization_table) == "LABEL")
+  raw_harmonization_table[ , 1:label_column_index]
+}
+
+get_micro_recodes <- function(raw_harmonization_table) {
+  code_column_index <- which(names(raw_harmonization_table) == "CODE")
+  raw_harmonization_table[ , code_column_index:ncol(raw_harmonization_table)]
+}
+
+
+make_micro_recoding_key <- function(micro_recodes) {
+  micro_recodes |> 
+    dplyr::mutate(
+      LABEL = dplyr::if_else(
+        stringr::str_detect(LABEL, "^$|^\\s*\"\\s*$"),
+        NA_character_,
+        LABEL
+      )
+    ) |> 
+    tidyr::fill(LABEL) |> 
+    tidyr::pivot_longer(
+      cols = c(-CODE, -LABEL), 
+      names_to = ".codelist_id", 
+      values_to = "input_code_and_label"
+    ) |> 
+    dplyr::filter(input_code_and_label != "") |> 
+    dplyr::mutate(
+      .codelist_id = stringr::str_remove(.codelist_id, "\\.[0-9]+$"),
+      input_code = stringr::str_extract(input_code_and_label, "^.+(?= =)"),
+      input_label = stringr::str_extract(input_code_and_label, "(?<== ).+$"),
+      LABEL = stringr::str_trim(LABEL)
+    )
+}
+
+
+make_aggregate_recoding_key <- function(aggregate_recodes) {
+  aggregate_recodes |> 
+    dplyr::filter(dplyr::if_any(.cols = c(-CODE, -LABEL), .fns = ~.x != "")) |> 
+    tidyr::pivot_longer(
+      cols = c(-CODE, -LABEL), 
+      names_to = ".codelist_id", 
+      values_to = "recode_and_label"
+    ) |> 
+    dplyr::filter(recode_and_label != "") |> 
+    dplyr::mutate(
+      .codelist_id = stringr::str_remove(.codelist_id, "\\.[0-9]+$"),
+      recode = stringr::str_extract(recode_and_label, "^.+(?= =)"),
+      recode_label = stringr::str_extract(recode_and_label, "(?<== ).+$"),
+      LABEL = stringr::str_trim(LABEL)
+    ) |> 
+    dplyr::select(-recode_and_label) |> 
+    dplyr::mutate(
+      min_code = min(CODE),
+      max_code = max(CODE),
+      min_label = LABEL[CODE == min(CODE)][[1]],
+      max_label = LABEL[CODE == max(CODE)][[1]],
+      .by = c(.codelist_id, recode)
+    ) |> 
+    dplyr::mutate(
+      standardized_recode = paste0(min_code, "-", max_code), 
+      standardized_recode_label = paste0(min_label, " - ", max_label)
+    )
+}
+
+
+attach_harmonized_recodes <- function(df, 
+                                      micro_recoding_key, 
+                                      aggregate_recoding_key,
+                                      harmonized_var_name,
+                                      var_to_harmonize,
+                                      codelist_id) {
+  
+  harmonized_var_name <- rlang::sym(harmonized_var_name)
+  harmonized_var_label <- rlang::sym(paste0(harmonized_var_name, "_LABEL"))
+  harmonized_var_name_agg <- rlang::sym(paste0(harmonized_var_name, "_agg"))
+  harmonized_var_label_agg <- rlang::sym(paste0(harmonized_var_name, "_agg_LABEL"))
+  
+  df |> 
+    dplyr::left_join(
+      micro_recoding_key |> 
+        dplyr::filter(.codelist_id == codelist_id) |> 
+        dplyr::select(
+          !!harmonized_var_name := CODE, 
+          !!harmonized_var_label := LABEL, 
+          !!rlang::sym(var_to_harmonize) := input_code
+        ),
+      by = var_to_harmonize
+    ) |> 
+    dplyr::left_join(
+      aggregate_recoding_key |> 
+        dplyr::filter(.codelist_id == codelist_id) |> 
+        dplyr::distinct(standardized_recode, standardized_recode_label, recode) |> 
+        dplyr::select(
+          !!harmonized_var_name_agg := standardized_recode, 
+          !!harmonized_var_label_agg := standardized_recode_label, 
+          !!rlang::sym(var_to_harmonize) := recode
+        ),
+      by = var_to_harmonize
+    ) |> 
+    dplyr::mutate(
+      !!harmonized_var_name := dplyr::coalesce(
+        !!harmonized_var_name, 
+        !!harmonized_var_name_agg
+      ),
+      !!harmonized_var_label := dplyr::coalesce(
+        !!harmonized_var_label, 
+        !!harmonized_var_label_agg
+      )
+    ) |> 
+    dplyr::select(-(dplyr::contains("_agg")))
+}
+```
+
+```{r}
+abs_harmonized <- attach_harmonized_codes_and_labels(
+  abs_highest_yr_of_school_tbl_natl,
+  harmonization_table = 
+    "EDATTAIN_harmonization_table_with_integrated_codelists_and_alternate_structure.csv",
+  harmonized_var_name = "EDATTAIN",
+  var_to_harmonize = "HSCP",
+  codelist_id = "CL_C21_HSCP02"
+)
+```
+
+```{r}
+pdh_harmonized <- attach_harmonized_codes_and_labels(
+  pdh_educ_tbl,
+  harmonization_table = 
+    "EDATTAIN_harmonization_table_with_integrated_codelists_and_alternate_structure.csv",
+  harmonized_var_name = "EDATTAIN",
+  var_to_harmonize = "EDUCATION",
+  codelist_id = "CL_COM_ISCED11"
+)
+```
+
+Now let's see the range of harmonized codes and labels in each dataset:
+
+```{r}
+abs_harmonized |> 
+  dplyr::distinct(EDATTAIN, EDATTAIN_LABEL) |> 
+  dplyr::arrange(EDATTAIN)
+```
+
+```{r}
+pdh_harmonized |> 
+  dplyr::distinct(EDATTAIN, EDATTAIN_LABEL) |> 
+  dplyr::arrange(EDATTAIN)
+```
+
+Looks like we can compare using codes 100-212, 221, 311-400, and 999.
+
+```{r}
+pdh_harmonized_collapsed <- pdh_harmonized |> 
+  dplyr::mutate(
+    EDATTAIN_collapsed = dplyr::case_when(
+      EDATTAIN %in% c(100, 212) ~ "100-212",
+      EDATTAIN %in% c(311, 322, 400) ~ "311-400",
+      .default = EDATTAIN
+    )
+  )
+```
+
+The description for the PDH data doesn't mention an age universe, but the age categories in the data suggest the universe is persons 25 and over, so we should limit the ABS data to that age range for the comparison. What are the codes for ages 25 and over?
+
+```{r}
+CL_C21_AGEP04_codelist <- purrr::keep(
+  abs_highest_yr_of_school_DSD_codelists,
+  ~.x@id == "CL_C21_AGEP04"
+)[[1]]
+
+purrr::map(
+  CL_C21_AGEP04_codelist@Code,
+  ~dplyr::tibble(id = .x@id, label = .x@label$en)
+) |> 
+  purrr::list_rbind()
+```
+
+Looks like we want everything except codes "\_T", "15_19", and "20_24".
+
+Now let's limit the statistics to totals by age and sex, and then we can combine them:
+
+```{r}
+abs_harmonized_totals <- abs_harmonized |> 
+  dplyr::filter(SEXP == 3 & !AGEP %in% c("_T", "15_19", "20_24")) |> 
+  dplyr::summarize(n_persons = sum(n_persons), .by = c(EDATTAIN, EDATTAIN_LABEL)) |> 
+  dplyr::filter(EDATTAIN %in% c("100-212", "221", "311-400", "999")) |> 
+  dplyr::mutate(
+    pct = round(100 * n_persons / sum(n_persons), 2),
+    country = "AU"
+  )
+
+pdh_harmonized_totals <- pdh_harmonized_collapsed |> 
+  dplyr::filter(SEX == "_T" & AGE == "_T" & DISABILITY == "_T") |> 
+  dplyr::summarize(n_persons = sum(obsValue), .by = c(GEO_PICT, EDATTAIN_collapsed)) |> 
+  dplyr::filter(EDATTAIN_collapsed %in% c("100-212", "221", "311-400", "999")) |> 
+  dplyr::mutate(pct = round(100 * n_persons / sum(n_persons), 2), .by = GEO_PICT) |> 
+  dplyr::rename(country = GEO_PICT, EDATTAIN = EDATTAIN_collapsed) |> 
+  dplyr::left_join(
+    abs_harmonized_totals |> 
+      dplyr::distinct(EDATTAIN, EDATTAIN_LABEL),
+    by = "EDATTAIN"
+  )
+
+combined_harmonized_totals <- dplyr::bind_rows(abs_harmonized_totals, pdh_harmonized_totals)
+```
+
+Now let's join on the country labels:
+
+```{r}
+CL_COM_GEO_PICT_codelist <- purrr::keep(
+  pdh_educ_DSD_codelists,
+  ~.x@id == "CL_COM_GEO_PICT"
+)[[1]]
+
+country_codes <- purrr::map(
+  CL_COM_GEO_PICT_codelist@Code,
+  ~dplyr::tibble(id = .x@id, label = .x@label$en)
+) |> 
+  purrr::list_rbind()
+
+combined_harmonized_totals <- combined_harmonized_totals |> 
+  dplyr::left_join(
+    country_codes |> 
+      dplyr::rename(country = id, country_label = label), 
+    by = "country"
+  ) |> 
+  dplyr::mutate(
+    country_label = dplyr::if_else(country == "AU", "Australia", country_label)
+  )
+```
+
+Now we can plot the distributions:
+
+```{r}
+#| fig-width: 9
+#| fig-height: 7
+combined_harmonized_totals |> 
+  dplyr::mutate(
+    edattain_start_numeric = as.numeric(stringr::str_extract(EDATTAIN, "^[0-9]+")),
+    EDATTAIN_LABEL = dplyr::case_match(
+      EDATTAIN_LABEL,
+      "General and unspecified track" ~ "Lower secondary completed",
+      "General track completed - UNIVERSITY COMPLETED" ~ "Upper secondary or higher completed",
+      "LESS THAN PRIMARY COMPLETED - Primary (6 years)" ~ "Primary completed or less",
+      .default = EDATTAIN_LABEL
+    )
+  ) |> 
+  ggplot2::ggplot(
+    ggplot2::aes(x = forcats::fct_reorder(EDATTAIN_LABEL, edattain_start_numeric, .desc = TRUE), y = pct)
+  ) +
+    ggplot2::geom_col() + 
+    ggplot2::facet_wrap(~country_label) +
+    ggplot2::coord_flip() +
+    ggplot2::labs(
+      title = "Educational attainment, selected countries in Oceania", 
+      subtitle = "Persons age 25+",
+      x = NULL, 
+      y = "%",
+      caption = "Sources: Australian Bureau of Statistics and Pacific Data Hub"
+    )
+```

@@ -1,0 +1,113 @@
+---
+title: "ESTAT education example"
+---
+
+# Find education codelist from ESTAT
+
+Let's explore ESTAT by retrieving all dataflows.
+
+```{r}
+all_estat_dataflows <- rsdmx::readSDMX(providerId = "ESTAT", resource = "dataflow")
+all_estat_dataflows_table <- dplyr::as_tibble(all_estat_dataflows)
+```
+
+Now let's look for dataflows mentioning educational attainment:
+
+```{r}
+all_estat_dataflows_table |> 
+  dplyr::filter(stringr::str_detect(Name.en, "[Ee]ducational attainment")) |> 
+  dplyr::select(id, Name.en, dsdRef)
+```
+
+The first one looks good: "Population aged 25-64 by educational attainment level, sex and metropolitan region", which uses the data structure definition (DSD) "MET_EDAT_LFSE4". Let's examine the educational attainment codelist used by that dataflow by pulling down the corresponding DSD.
+
+```{r}
+estat_edattain_DSD <- rsdmx::readSDMX(
+  providerId = "ESTAT",
+  resource = "datastructure",
+  resourceId = "MET_EDAT_LFSE4"
+)
+
+estat_edattain_DSD_codelists <- estat_edattain_DSD@codelists@codelists
+
+purrr::map(
+  estat_edattain_DSD_codelists,
+  ~dplyr::tibble(id = .x@id, name = .x@Name$en)
+) |> 
+  purrr::list_rbind()
+```
+
+This DSD uses the codelist "ISCED11" for educational attainment. Let's look at the codes and labels in that codelist:
+
+```{r}
+isced11_codelist <- purrr::keep(
+  estat_edattain_DSD@codelists@codelists,
+  ~.x@id == "ISCED11"
+)[[1]]
+
+purrr::map(
+  isced11_codelist@Code,
+  ~dplyr::tibble(id = .x@id, label = .x@label$en)
+) |> 
+  purrr::list_rbind()
+```
+
+If we want to see any content constraints relevant to educational attainment for this dataflow, we will need to construct the request URL manually since content constraints aren't supported by the rsdmx package:
+
+```{r}
+estat_base_url <- purrr::keep(
+  all_data_providers@providers,
+  ~.x@name == "Eurostat (Statistical office of the European Union)"
+)[[1]]@builder@regUrl
+
+estat_base_url
+```
+
+```{r}
+estat_edattain_DSD_content_constraint_url <- paste(
+  estat_base_url,
+  "contentconstraint",
+  "ESTAT",
+  "MET_EDAT_LFSE4",
+  "1.0",
+  sep = "/"
+)
+
+estat_edattain_DSD_content_constraint_url
+```
+
+```{r}
+response <- httr::GET(estat_edattain_DSD_content_constraint_url)
+
+response_content <- httr::content(response) |> 
+  base::rawToChar()
+
+response_content_as_list <- XML::xmlToList(response_content)
+
+estat_edattain_DSD_content_constraints <- 
+  response_content_as_list$Structures$Constraints$ContentConstraint$CubeRegion
+
+estat_edattain_DSD_content_constraints <- estat_edattain_DSD_content_constraints[
+    names(estat_edattain_DSD_content_constraints) == "KeyValue"
+]
+
+purrr::map(
+  estat_edattain_DSD_content_constraints,
+  ~dplyr::tibble(
+    dimension = .x$.attrs[["id"]],
+    values = paste0(.x[names(.x) == "Value"], collapse = " ")
+  )
+) |> 
+  purrr::list_rbind()
+```
+
+The output above shows that in this dataflow, educational attainment only takes the four values "ED0-2", "ED3-8", "ED3_4", and "ED5-8". We can check what those codes correspond to by re-using our code from above:
+
+```{r}
+purrr::map(
+  isced11_codelist@Code,
+  ~dplyr::tibble(id = .x@id, label = .x@label$en)
+) |> 
+  purrr::list_rbind() |> 
+  dplyr::filter(id %in% c("ED0-2", "ED3-8", "ED3_4", "ED5-8"))
+```
